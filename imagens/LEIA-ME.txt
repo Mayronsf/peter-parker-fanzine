@@ -1,0 +1,70 @@
+PETER PARKER FANZINE — LISTA DE IMAGENS
+=======================================
+
+Coloque nesta pasta (imagens/) os arquivos com exatamente estes nomes.
+O site encontra cada um sozinho. O que faltar aparece como espaço vazio com o nome do arquivo.
+
+Use imagens que você pode publicar: suas próprias fotos e artes, ou o material de imprensa
+oficial da Sony para uso editorial, com o crédito que eles pedirem.
+
+IMPORTANTE: o efeito do rosto virando máscara só funciona com o site aberto por um servidor
+(publicado na internet, ou com a extensão "Live Server" do VS Code). Abrindo o index.html com
+dois cliques, o navegador bloqueia as imagens do topo por segurança.
+
+
+TOPO (o efeito do mouse)
+------------------------
+hero-rosto.png     Peter sem máscara, do peito para cima, recortado com fundo transparente. ~1600 x 1850
+hero-mascara.png   O MESMO enquadramento, mesmo tamanho e posição, com máscara e traje.
+                   As duas precisam se sobrepor certinho para o efeito ficar bom.
+
+GALERIA HORIZONTAL
+------------------
+galeria-1.jpg   vertical 3:4    Queens, 2017 — De Volta ao Lar
+galeria-2.jpg   quadrada 1:1    Nova York, 2018 — Guerra Infinita
+galeria-3.jpg   horizontal 4:3  Nova York, 2026 — Um Novo Dia
+galeria-4.jpg   vertical 4:5    Veneza, 2019 — Longe de Casa
+galeria-5.jpg   horizontal 3:2  Londres, 2019 — Longe de Casa
+galeria-6.jpg   vertical 3:4    Nova York, 2021 — Sem Volta Para Casa
+galeria-7.jpg   horizontal 16:10 Bastidores de Um Novo Dia
+(As fotos da galeria 1 a 6 também aparecem no menu.)
+
+COM / SEM MÁSCARA
+-----------------
+com-mascara.jpg   vertical, close de perfil de máscara (fica na lateral esquerda). ~900 x 1600
+sem-mascara.jpg   vertical, close de perfil sem máscara (lateral direita). ~900 x 1600
+foto-larga.jpg    horizontal grande, tela cheia. ~2400 x 1350
+
+TRAJES (recorte com fundo transparente + uma cena que aparece no mouse)
+-----------------------------------------------------------------------
+traje-1.png  e  traje-1-cena.jpg   Caseiro, 2016 (Guerra Civil)
+traje-2.png  e  traje-2-cena.jpg   Stark, 2016 (Guerra Civil e De Volta ao Lar)
+traje-3.png  e  traje-3-cena.jpg   Aranha de Ferro, 2018 (Guerra Infinita)
+traje-4.png  e  traje-4-cena.jpg   Furtivo, 2019 (Longe de Casa)
+traje-5.png  e  traje-5-cena.jpg   Atualizado, 2019 (Longe de Casa)
+traje-6.png  e  traje-6-cena.jpg   Integrado, 2021 (Sem Volta Para Casa)
+traje-7.png  e  traje-7-cena.jpg   Final, 2021 (Sem Volta Para Casa)
+traje-8.png  e  traje-8-cena.jpg   Um Novo Dia, 2026
+Tamanho sugerido: ~1000 x 1000 para os dois.
+
+O FILME
+-------
+filme-1.jpg   vertical 3:4
+filme-2.jpg   vertical 4:5
+filme-3.jpg   horizontal 16:7
+
+DIÁRIO (capas dos textos, verticais 3:4)
+----------------------------------------
+post-1.jpg   Quatro anos depois: onde Um Novo Dia começa
+post-2.jpg   O traje feito em casa
+post-3.jpg   Os números de Um Novo Dia
+post-4.jpg   Oito trajes em dez anos
+post-5.jpg   Onde assistir Um Novo Dia em casa
+
+RODAPÉ
+------
+rodape.png   recorte com máscara, fundo transparente, do peito para cima. ~1200 x 1400
+
+
+Quer trocar uma imagem sem renomear? Abra o index.html, procure o nome do espaço
+(por exemplo "galeria-3") no bloco SLOTS do script e mude o caminho.

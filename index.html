@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peter Parker Fanzine</title>
+<meta name="description" content="Fanzine não oficial sobre Peter Parker e Homem-Aranha: Um Novo Dia.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#d7152b">
+<style>
+/* Fontes: Inter (PP Sans) e Liberation Serif (PP Serif), ambas SIL OFL 1.1, arquivos em fontes/ */
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-300.woff") format("woff");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-400i.woff") format("woff");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-600.woff") format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-700i.woff") format("woff");font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-800.woff") format("woff");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Sans";src:url("fontes/pp-sans-900.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Serif";src:url("fontes/pp-serif-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Serif";src:url("fontes/pp-serif-400i.woff") format("woff");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"PP Serif";src:url("fontes/pp-serif-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Serif";src:url("fontes/pp-serif-700i.woff") format("woff");font-weight:700;font-style:italic;font-display:swap}
+/* Layout: the landonorris.com rhythm in Spider colours. Cream sheets drawn with faint web lines alternate with night blue and black; a sticky portrait hero shrinks into a frame behind a marquee, a pinned photo strip crosses, a notched suit grid, a red-glow footer plate. */
+:root{
+  --cream:#f2f1ec;
+  --cream-2:#e4e2db;
+  --night:#0f1a35;
+  --night-2:#1a2648;
+  --slate:#5d6680;
+  --black:#0b0c10;
+  --black-2:#17191f;
+  --red:#d7152b;
+  --red-hot:#ff3347;
+  --ink:#14161c;
+  --mute-cream:#5f6168;
+  --mute-night:#a3acc4;
+  --dim-night:#6b77a0;
+  --dim-cream:#8a8c92;
+
+  --f-sans:"PP Sans",system-ui,sans-serif;
+  --f-serif:"PP Serif","Times New Roman",serif;
+  --f-sig:"PP Serif","Times New Roman",serif;
+  --f-brush:"PP Serif","Times New Roman",serif;
+
+  --ease:cubic-bezier(.65,.05,0,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --gutter:max(clamp(16px,2.6vw,48px),env(safe-area-inset-left,0px));
+  --gutter-r:max(clamp(16px,2.6vw,48px),env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+html.locked{overflow:hidden}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f-sans);font-size:1rem;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;scrollbar-width:none}
+body::-webkit-scrollbar{display:none}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+img,canvas,svg{display:block;max-width:100%}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-underline-offset:.18em}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+cite{font-style:italic}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.serif{font-family:var(--f-serif);font-weight:400;letter-spacing:-.005em}
+.red{color:var(--red)}
+.inner{padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.skip{position:fixed;left:var(--gutter);top:calc(env(safe-area-inset-top,0px) + 10px);z-index:200;transform:translateY(-220%);background:var(--red);color:#fff;padding:.55rem 1rem;border-radius:8px;font-weight:700;text-decoration:none}
+.skip:focus{transform:none}
+.cap{font-size:.68rem;font-weight:700;font-stretch:90%;text-transform:uppercase;letter-spacing:.06em}
+
+/* character roll */
+.roll{display:inline-flex;overflow:hidden;vertical-align:top;line-height:1.15}
+.roll .ch{display:inline-block;white-space:pre;text-shadow:0 1.6em 0 currentColor;transition:transform .6s var(--ease);transition-delay:calc(var(--i) * 13ms)}
+a:hover .roll .ch,button:hover .roll .ch,a:focus-visible .roll .ch,button:focus-visible .roll .ch{transform:translateY(-1.6em)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;min-height:2.85rem;padding:0 1.1rem;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-weight:800;font-stretch:88%;text-transform:uppercase;font-size:.85rem;letter-spacing:.02em;transition:background-color .25s,transform .25s var(--ease-out)}
+.btn:hover{background:var(--red-hot)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:1rem;height:1rem;flex:none}
+.btn--dark{background:var(--ink);color:var(--cream)}
+.btn--dark:hover{background:var(--red)}
+.sq{width:2.6rem;height:2.6rem;border-radius:7px;background:var(--red);color:#fff;display:grid;place-items:center;transition:background-color .25s}
+.sq:hover{background:var(--red-hot)}
+.sq svg{width:1.05rem;height:1.05rem;transition:transform .5s var(--ease)}
+.sq:hover svg{transform:rotate(-45deg)}
+
+/* scroll indicator */
+.scrollbar{position:fixed;right:calc(env(safe-area-inset-right,0px) + 6px);top:50%;height:24vh;width:2px;transform:translateY(-50%);background:rgba(120,124,140,.25);z-index:50;pointer-events:none}
+.scrollbar span{display:block;height:20%;background:var(--red);transform:translateY(calc(var(--p,0) * 400%))}
+
+/* nav */
+.nav{--fg:var(--ink);position:fixed;top:0;left:0;right:0;z-index:60;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gutter-r) 12px var(--gutter);color:var(--fg);pointer-events:none;transition:color .5s var(--ease)}
+.nav>*{pointer-events:auto}
+.nav[data-on="dark"],.nav.menu-open{--fg:var(--cream)}
+.brand{justify-self:start;display:grid;text-decoration:none;line-height:.82}
+.brand .b1{font-family:var(--f-serif);font-size:1.75rem;letter-spacing:.01em}
+.brand .b2{font-weight:900;font-stretch:80%;font-size:1.55rem;text-transform:uppercase;letter-spacing:-.01em}
+.mono{justify-self:center;margin-top:.35rem;width:2.3rem;height:2.3rem}
+.mono path{fill:currentColor}
+.nav-right{justify-self:end;display:flex;gap:.5rem}
+.ham{width:2.85rem;height:2.85rem;border-radius:8px;box-shadow:inset 0 0 0 1.5px currentColor;position:relative;background:transparent;transition:background-color .3s}
+.ham:hover{background:rgba(120,124,140,.16)}
+.ham span{position:absolute;left:30%;right:30%;height:1.6px;background:currentColor;top:50%;transition:transform .5s var(--ease)}
+.ham span:first-child{transform:translateY(-3.5px)}
+.ham span:last-child{transform:translateY(3.5px);right:42%}
+.ham[aria-expanded="true"] span:first-child{transform:rotate(45deg)}
+.ham[aria-expanded="true"] span:last-child{transform:rotate(-45deg);right:30%}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:55;background:var(--night);color:var(--cream);overflow-y:auto;clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease)}
+.menu.open{clip-path:inset(0 0 0 0)}
+.menu-inner{min-height:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,5rem);padding:calc(env(safe-area-inset-top,0px) + 6rem) var(--gutter-r) calc(env(safe-area-inset-bottom,0px) + 2rem) var(--gutter)}
+.menu-art{display:grid;grid-template-columns:1fr 1fr;gap:1rem;height:calc(100svh - 8.5rem);overflow:hidden;border-radius:12px}
+.menu-col{display:flex;flex-direction:column;animation:menu-up 34s linear infinite;animation-play-state:paused}
+.menu-col:nth-child(2){animation-direction:reverse}
+.menu.open .menu-col{animation-play-state:running}
+.menu-col .slot{aspect-ratio:3/4;border-radius:10px;margin-bottom:1rem;flex:none}
+@keyframes menu-up{to{transform:translateY(-50%)}}
+.menu-main{display:grid;grid-template-rows:1fr auto;gap:2rem;min-width:0}
+.menu-links{display:grid;align-content:center;gap:.1rem}
+.menu-links a{position:relative;display:inline-flex;width:max-content;max-width:100%;text-decoration:none;font-weight:850;font-stretch:80%;text-transform:uppercase;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.02em;padding-bottom:.12em}
+.menu-links a .squig{position:absolute;left:0;right:0;bottom:0;height:.2em;width:100%;color:var(--red);opacity:0;transition:opacity .3s}
+.menu-links a[aria-current="true"] .squig{opacity:1}
+.menu-links a:hover{color:var(--red-hot)}
+.menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;color:var(--mute-night);font-size:.9rem}
+.menu-foot ul{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem}
+.menu-foot a{color:var(--cream);text-decoration:none;font-weight:700;text-transform:uppercase;font-size:.85rem}
+.menu-foot a:hover{color:var(--red-hot)}
+
+/* jump wipe */
+.jump{position:fixed;inset:0;z-index:95;display:grid;place-items:center;pointer-events:none;visibility:hidden;background:var(--red);clip-path:inset(100% 0 0 0);transition:clip-path .55s var(--ease)}
+.jump.in{visibility:visible;pointer-events:auto;clip-path:inset(0 0 0 0)}
+.jump.in.out{clip-path:inset(0 0 100% 0)}
+.jump-label{display:grid;justify-items:center;color:#fff;line-height:.9}
+.jump-label span{font-family:var(--f-serif);font-size:clamp(1.8rem,4vw,3rem)}
+.jump-label b{font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(3rem,10vw,8rem);letter-spacing:-.02em}
+
+/* image slots */
+.slot{position:relative;overflow:hidden;background-color:var(--cream-2);isolation:isolate}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--ease-out)}
+.slot.contain img{object-fit:contain}
+.slot.has-img img{opacity:1}
+.slot:not(.has-img){background-image:repeating-linear-gradient(135deg,rgba(20,22,28,.06) 0 1px,transparent 1px 11px)}
+.slot:not(.has-img)::after{content:attr(data-label);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:86%;text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.03em;line-height:1.35;color:var(--mute-cream);white-space:pre-line;pointer-events:none}
+.dark .slot{background-color:var(--black-2)}
+.dark .slot:not(.has-img){background-image:repeating-linear-gradient(135deg,rgba(242,241,236,.05) 0 1px,transparent 1px 11px)}
+.dark .slot:not(.has-img)::after{color:var(--mute-night)}
+
+/* edit panel */
+.edit-msg{font-size:.8rem;color:var(--cream);min-height:1.2em}
+
+/* ================= HERO ================= */
+.hero-track{position:relative;height:250vh;background:var(--cream)}
+.hero-pin{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--cream)}
+.web-bg{position:absolute;inset:0;background-size:cover;background-position:center;pointer-events:none}
+.hero-marquee{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:grid;gap:0;opacity:0;pointer-events:none;color:var(--cream)}
+.hm-row{white-space:nowrap;line-height:.86;will-change:transform}
+.hm-row.serif{font-size:clamp(4rem,12vw,11rem);color:var(--red)}
+.hm-row.sans{font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(3.6rem,11vw,10rem);letter-spacing:-.02em}
+.hero-stage{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
+.hero-frame{position:absolute;inset:0;border-radius:var(--r,0px);background:#c9cbd1;opacity:var(--fo,0);transition:none}
+.hero-gl{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.hero-gl.painting{touch-action:none}
+.next{position:absolute;left:var(--gutter);bottom:calc(env(safe-area-inset-bottom,0px) + 4.5rem);width:6.6rem;padding:1.3rem .55rem .7rem;display:grid;gap:.5rem;justify-items:center;text-align:center;color:var(--ink)}
+.next-frame{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:-1}
+.next-frame path{fill:rgba(242,241,236,.75);stroke:rgba(20,22,28,.4);stroke-width:1}
+.next .cap{position:absolute;top:.3rem;left:.55rem;font-size:.5rem}
+.next-icon{width:3.6rem;height:2.4rem;color:var(--ink)}
+.next-title{font-weight:850;font-stretch:80%;text-transform:uppercase;font-size:.62rem;line-height:1.1}
+.next-days{font-weight:900;font-stretch:75%;font-size:1.6rem;line-height:.9;font-variant-numeric:tabular-nums}
+.next-days small{display:block;font-size:.5rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.next hr{width:100%;border:0;border-top:1px solid rgba(20,22,28,.25);margin:.1rem 0}
+.next-since{font-size:.5rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
+.hero-hint{position:absolute;right:var(--gutter-r);bottom:calc(env(safe-area-inset-bottom,0px) + 1.4rem);display:flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:750;text-transform:uppercase;letter-spacing:.05em;color:var(--mute-cream)}
+.hero-hint svg{width:1.2rem;height:1.2rem}
+.hero-touch{display:none;align-items:center;gap:.5rem;min-height:2.5rem;padding:0 .9rem;border-radius:8px;background:var(--ink);color:var(--cream);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.hero-touch[aria-pressed="true"]{background:var(--red)}
+@media (hover:none){.hero-touch{display:inline-flex}.hero-hint .mouse-only{display:none}}
+
+/* ================= STATEMENT ================= */
+.dark{background:var(--night);color:var(--cream)}
+.statement{padding-block:clamp(7rem,14vw,12rem) clamp(6rem,12vw,10rem);display:grid;justify-items:center;text-align:center;gap:2.5rem}
+.impact{max-width:20ch;font-weight:850;font-stretch:80%;text-transform:uppercase;font-size:clamp(2.2rem,5.6vw,5.4rem);line-height:.92;letter-spacing:-.02em}
+.impact .serif{color:var(--red);text-transform:uppercase;font-size:1.12em;line-height:.8}
+.lined .ln{display:block}
+.lined .ln-i{position:relative;display:inline-block;color:var(--dim-night);transition:color .3s}
+.lined .ln-i.on{color:var(--cream)}
+.lined .ln-i.on .serif{color:var(--red)}
+.lined .ln-i .serif{color:inherit}
+.lined .ln-b{position:absolute;inset:-.02em -.06em;background:var(--red);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.sign{display:grid;justify-items:center;gap:.6rem;color:var(--mute-night)}
+.sign svg{width:2.6rem;height:2.6rem;color:var(--cream)}
+
+/* ================= STRIP ================= */
+.strip{position:relative;background:var(--night);color:var(--cream)}
+.strip-pin{display:flex;flex-direction:column;justify-content:center;padding-block:calc(env(safe-area-inset-top,0px) + 5rem) 2rem}
+.strip-view{overflow-x:auto;overscroll-behavior-x:contain;flex:1;min-height:0;display:flex}
+.strip-track{display:flex;align-items:center;gap:clamp(2rem,4vw,4.5rem);width:max-content;padding-left:var(--gutter);padding-right:calc(var(--gutter-r) + 10vw);padding-block:.5rem}
+.js-pin .strip-pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.js-pin .strip-view{overflow:hidden}
+.g-col{flex:none;display:flex;flex-direction:column;gap:clamp(2rem,6vh,4.5rem)}
+.g-col.low{align-self:flex-end}
+.g-col.high{align-self:flex-start}
+.g-item{display:grid;gap:.45rem;width:var(--w)}
+.g-item .slot{width:100%;aspect-ratio:var(--ar)}
+.g-cap{color:inherit;opacity:.8}
+.callout{flex:none;align-self:center;width:min(19rem,74vw);display:grid;gap:.8rem}
+.callout p{font-family:var(--f-serif);font-size:clamp(1.35rem,1.9vw,1.75rem);line-height:1.08}
+.callout p b{font-weight:400;color:var(--red)}
+.sig{font-family:var(--f-sig);font-size:2.4rem;line-height:1;color:var(--red)}
+.pill{position:absolute;z-index:3;right:.6rem;bottom:.6rem;display:inline-flex;align-items:stretch;border-radius:6px;overflow:hidden;font-size:.72rem;font-weight:800}
+.pill span{display:grid;place-items:center;padding:.35rem .55rem;background:var(--red);color:#fff}
+.pill span+span{background:var(--cream);color:var(--ink)}
+.pill svg{width:1rem;height:1rem}
+
+/* ================= DUO (com / sem máscara) ================= */
+.duo{position:relative;overflow:hidden;background:var(--cream);min-height:min(100svh,860px);display:grid;place-items:center}
+.duo-img{position:absolute;top:0;bottom:0;width:min(30vw,440px)}
+.duo-img.left{left:0}
+.duo-img.right{right:0}
+.duo-text{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);padding-inline:var(--gutter) var(--gutter-r);max-width:46rem}
+.duo-col{display:grid;gap:1rem;align-content:start}
+.duo-col:first-child{justify-items:end;text-align:right}
+.duo-col h2{position:relative;display:grid;line-height:.84}
+.duo-col h2 .serif{font-size:clamp(2.2rem,4.2vw,3.9rem);text-transform:uppercase}
+.duo-col h2 .sans{font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(2.2rem,4.2vw,3.9rem);letter-spacing:-.02em}
+.duo-col h2 .brush{position:absolute;right:4%;top:10%;font-family:var(--f-brush);font-size:clamp(2.8rem,6vw,5.4rem);color:var(--red);transform:rotate(-12deg);line-height:1;pointer-events:none}
+.duo-col p{font-size:.95rem;color:var(--mute-cream);max-width:17rem}
+.wide{position:relative;background:var(--black)}
+.wide .slot{height:min(100svh,900px)}
+.wide .slot img{transform:scale(var(--ws,1.12));transition:none}
+.blocks{position:absolute;left:0;right:0;bottom:0;height:7rem;pointer-events:none}
+.blocks i{position:absolute;bottom:0;background:var(--black);transform-origin:left bottom;transform:scaleY(var(--bs,0))}
+.blocks i:nth-child(1){left:0;width:22%;height:100%}
+.blocks i:nth-child(2){left:22%;width:30%;height:55%}
+.blocks i:nth-child(3){left:52%;width:48%;height:80%}
+
+/* ================= TRAJES ================= */
+.trajes{background:var(--black);color:var(--cream);padding-block:clamp(6rem,11vw,9rem) clamp(4rem,8vw,6rem)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1.5rem clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(3rem,7vw,6rem)}
+.h2{display:grid;justify-items:start;line-height:.86}
+.h2 .sans{font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(3rem,7.4vw,6rem);letter-spacing:-.02em}
+.h2 .serif{font-size:clamp(3rem,7.4vw,6rem);color:var(--red)}
+.sec-head p{max-width:30rem;font-size:1.05rem;color:var(--mute-cream)}
+.dark .sec-head p,.trajes .sec-head p{color:var(--mute-night)}
+.suit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.75rem,1.4vw,1.25rem)}
+.suit{position:relative;display:grid;gap:0;border-radius:6px}
+.suit:focus-visible{outline-offset:4px}
+.suit-box{position:relative;aspect-ratio:1/1.02}
+.suit-art{position:absolute;inset:0;clip-path:url(#notch);-webkit-clip-path:url(#notch);background:var(--black-2)}
+.suit-art .slot{position:absolute;inset:0;background-color:transparent}
+.suit-art .suit-img img{transform:scale(1);transition:transform .9s var(--ease),opacity .6s}
+.suit:hover .suit-img img,.suit:focus-visible .suit-img img,.suit.is-on .suit-img img{transform:scale(1.08)}
+.suit-reveal{clip-path:ellipse(0% 0% at 50% 0%);transition:clip-path .9s var(--ease);background:linear-gradient(160deg,var(--red) 0%,var(--night) 75%)!important}
+.suit-reveal:not(.has-img)::after{content:none}
+.suit:hover .suit-reveal,.suit:focus-visible .suit-reveal,.suit.is-on .suit-reveal{clip-path:ellipse(100% 150% at 50% 0%)}
+.suit-outline{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.suit-outline path{fill:none;stroke:rgba(242,241,236,.22);stroke-width:1.2;transition:stroke .5s}
+.suit:hover .suit-outline path,.suit:focus-visible .suit-outline path,.suit.is-on .suit-outline path{stroke:var(--red)}
+.suit-label{position:absolute;right:.6rem;bottom:0;height:16%;display:flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:800;font-stretch:88%;text-transform:uppercase;white-space:nowrap}
+.suit-label b{color:var(--red-hot);font-weight:800}
+.suit-film{position:absolute;left:.75rem;bottom:calc(16% + .65rem);z-index:2;font-size:.68rem;font-weight:700;color:rgba(242,241,236,.8);max-width:60%;line-height:1.25;opacity:0;transform:translateY(.4rem);transition:opacity .5s,transform .6s var(--ease)}
+.suit:hover .suit-film,.suit:focus-visible .suit-film,.suit.is-on .suit-film{opacity:1;transform:none}
+.see-more{background:var(--black);color:var(--cream);padding-block:clamp(3rem,7vw,5rem) clamp(5rem,10vw,8rem);display:grid;justify-items:center;text-align:center;gap:1.25rem;border-radius:0 0 50% 50%/0 0 22% 22%}
+.see-more svg{width:2.4rem;height:2.4rem;color:var(--red-hot)}
+.see-more p{font-family:var(--f-serif);font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.05;max-width:22ch}
+
+/* ================= FILME ================= */
+.filme{background:var(--cream);padding-block:clamp(5rem,10vw,9rem)}
+.filme-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.filme-text{display:grid;gap:1.4rem;justify-items:start}
+.filme-text .h2 .sans{font-size:clamp(2.8rem,6.4vw,5.4rem)}
+.filme-text .h2 .serif{font-size:clamp(2.8rem,6.4vw,5.4rem)}
+.filme-text>p{max-width:32rem;color:var(--mute-cream);font-size:1.05rem}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.5rem 1.5rem;font-size:.95rem;width:100%;max-width:34rem}
+.facts>div{display:contents}
+.facts dt{color:var(--mute-cream)}
+.facts dd{font-weight:650;font-variant-numeric:tabular-nums}
+.collage{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1rem;align-items:start}
+.collage .c1{aspect-ratio:3/4;margin-top:4rem}
+.collage .c2{aspect-ratio:4/5}
+.collage .c3{grid-column:1/-1;aspect-ratio:16/7;width:78%;justify-self:end;margin-top:-3rem}
+.sticker{position:absolute;left:-1.2rem;top:42%;z-index:3;width:clamp(6.5rem,10vw,8.5rem);aspect-ratio:1;border-radius:50%;background:var(--red);color:#fff;display:grid;place-content:center;text-align:center;transform:rotate(var(--rot,-10deg));line-height:.9;box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+.sticker b{font-weight:900;font-stretch:75%;font-size:clamp(1.5rem,2.4vw,2.1rem);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sticker span{font-family:var(--f-serif);font-size:.95rem;margin-top:.2rem}
+
+/* ================= ELENCO ================= */
+.elenco{position:relative;overflow:hidden;background:var(--cream);padding-block:clamp(5rem,10vw,8rem)}
+.elenco .sec-head{position:relative;z-index:2}
+.swash{position:absolute;left:-1vw;top:clamp(11rem,19vw,16rem);z-index:1;font-family:var(--f-brush);font-size:clamp(7rem,19vw,17rem);line-height:1;color:var(--red);opacity:.85;transform:rotate(-9deg);pointer-events:none;white-space:nowrap}
+.marquee{position:relative;z-index:2;overflow:hidden;padding-block:.5rem}
+.mq-track{display:flex;width:max-content;will-change:transform}
+.mq-set{display:flex;flex:none;align-items:center}
+.mq-item{display:grid;justify-items:center;gap:.2rem;padding-inline:clamp(1.5rem,3vw,3rem);white-space:nowrap;text-align:center}
+.mq-item b{font-size:clamp(1.3rem,2.2vw,2rem);line-height:1;font-weight:800;color:var(--ink)}
+.mq-item i{font-style:normal;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mute-cream)}
+.lg1 b{font-family:var(--f-serif);font-weight:400;font-style:italic;font-size:clamp(1.6rem,2.6vw,2.4rem)}
+.lg2 b{font-weight:900;font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em}
+.lg3 b{font-weight:300;font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(1rem,1.6vw,1.4rem)}
+.lg4 b{font-family:var(--f-serif);font-weight:400;text-transform:uppercase;letter-spacing:.04em}
+.lg5 b{font-weight:700;font-stretch:110%;font-style:italic}
+.marquee.static .mq-track{width:auto;flex-wrap:wrap;justify-content:center}
+.marquee.static .mq-set{flex-wrap:wrap;justify-content:center}
+.marquee.static [data-clone]{display:none}
+
+/* ================= DIÁRIO ================= */
+.diario{position:relative;overflow:hidden;background:var(--cream);padding-block:clamp(4rem,8vw,6rem) clamp(9rem,16vw,14rem)}
+.diario::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-30%;height:60%;background:radial-gradient(closest-side,rgba(215,21,43,.38),rgba(215,21,43,0));pointer-events:none}
+.diario .h2{justify-items:center;text-align:center;margin-inline:auto}
+.fan{position:relative;display:flex;justify-content:center;align-items:flex-start;margin-top:clamp(3rem,6vw,5rem);padding-block:2rem 1rem;z-index:2}
+.fan>li{--w:clamp(12rem,15vw,15.5rem);flex:none;width:var(--w);margin-inline:calc(var(--w) * -.16);position:relative;z-index:var(--z);transform:translateY(var(--y)) rotate(var(--r));transition:transform .8s var(--ease)}
+.fan:hover>li,.fan:focus-within>li{transform:translateX(calc((var(--i) - 2) * var(--w) * .2)) translateY(calc(var(--y) * .6)) rotate(calc(var(--r) * .7))}
+.fan>li:hover,.fan>li:focus-within{z-index:9;transform:translateX(calc((var(--i) - 2) * var(--w) * .2)) translateY(-1.5rem) rotate(0deg)}
+.post{position:relative;display:block;width:100%;aspect-ratio:3/4;border-radius:18px;overflow:hidden;text-decoration:none;color:#fff;background:var(--night);box-shadow:0 24px 44px -24px rgba(15,26,53,.7)}
+.post .slot{position:absolute;inset:0}
+.post-shade{position:absolute;inset:auto 0 0 0;z-index:3;padding:3rem .9rem .9rem;background:linear-gradient(to top,rgba(11,12,16,.92),rgba(11,12,16,0));display:grid;gap:.4rem}
+.post-tag{justify-self:start;padding:.2rem .5rem;border-radius:5px;background:var(--red);font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.post-title{font-weight:800;font-stretch:85%;font-size:1.08rem;line-height:1.08;text-wrap:balance}
+.post-meta{font-size:.7rem;color:rgba(242,241,236,.75);font-variant-numeric:tabular-nums}
+.follow{position:relative;z-index:2;margin-top:2.5rem;display:grid;justify-items:center;gap:1rem;text-align:center}
+.follow p{font-family:var(--f-serif);font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1}
+.follow ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 2rem}
+.follow a{font-weight:800;text-transform:uppercase;font-size:.85rem;text-decoration:none;letter-spacing:.03em}
+.follow a:hover{color:var(--red)}
+
+/* ================= READER ================= */
+.reader{position:fixed;inset:0;z-index:80}
+.reader-scrim{position:absolute;inset:0;background:rgba(11,12,16,.6);opacity:0;transition:opacity .45s}
+.reader-panel{position:absolute;top:0;right:0;bottom:0;width:min(45rem,100%);overflow-y:auto;overscroll-behavior:contain;background:var(--cream);color:var(--ink);transform:translateX(102%);transition:transform .6s var(--ease);padding:0 max(clamp(1.25rem,4vw,3rem),env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 3rem) clamp(1.25rem,4vw,3rem)}
+.reader.open .reader-scrim{opacity:1}
+.reader.open .reader-panel{transform:none}
+.reader-bar{position:sticky;top:0;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:calc(env(safe-area-inset-top,0px) + 1rem) 0 1rem;background:var(--cream)}
+.reader-bar .post-tag{color:#fff}
+.reader-close{width:2.6rem;height:2.6rem;border-radius:8px;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--ink);transition:background-color .25s,color .25s}
+.reader-close:hover{background:var(--ink);color:var(--cream)}
+.reader-close svg{width:1.05rem;height:1.05rem}
+.reader-art{aspect-ratio:16/9;border-radius:14px}
+.reader h2{margin-top:1.75rem;font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:clamp(2rem,5vw,3.2rem);line-height:.92;letter-spacing:-.015em;text-wrap:balance}
+.reader-meta{display:flex;gap:1.25rem;margin-top:1rem;font-size:.85rem;color:var(--mute-cream);font-variant-numeric:tabular-nums}
+.reader-body{max-width:62ch;margin-top:1.75rem}
+.reader-body p{margin-top:1.05em;font-size:1.05rem;line-height:1.68}
+.reader-body h3{margin-top:2rem;font-family:var(--f-serif);font-weight:400;font-size:1.9rem;line-height:1}
+.reader-body .warn{padding:.75rem 1rem;border-radius:10px;background:var(--ink);color:var(--cream);font-weight:600;font-size:.95rem}
+.reader-body ol{margin-top:1.2rem;display:grid;gap:.85rem;counter-reset:s}
+.reader-body ol li{display:grid;grid-template-columns:3.2rem 1fr;gap:.75rem;line-height:1.55}
+.reader-body ol li b{font-weight:850;font-variant-numeric:tabular-nums;color:var(--red)}
+.reader-next{margin-top:2.75rem;display:grid;gap:.3rem;width:100%;text-align:left;padding:1.1rem 1.25rem;border-radius:12px;background:var(--ink);color:var(--cream);transition:background-color .3s}
+.reader-next span{font-size:.8rem;color:var(--mute-night)}
+.reader-next b{font-weight:850;font-stretch:85%;font-size:1.2rem;line-height:1.1}
+.reader-next:hover{background:var(--red)}
+.reader-next:hover span{color:#fff}
+
+/* ================= FOOTER ================= */
+.foot{position:relative;background:var(--cream);padding:0 var(--gutter-r) calc(env(safe-area-inset-bottom,0px) + 1rem) var(--gutter);margin-top:-6rem;z-index:2}
+.foot::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(215,21,43,0) 0,rgba(215,21,43,.35) 30%,rgba(215,21,43,.55) 100%);pointer-events:none}
+.foot-plate{position:relative;overflow:hidden;background:var(--night);color:var(--cream);clip-path:url(#plate);-webkit-clip-path:url(#plate);padding:clamp(4.5rem,7vw,6rem) clamp(1.25rem,4vw,3.5rem) 0;min-height:min(92svh,860px);display:grid;grid-template-rows:auto 1fr auto}
+.foot-plate::before{content:"";position:absolute;inset:0;background-image:var(--web-light);background-size:cover;opacity:.9;pointer-events:none}
+.foot-top{position:relative;display:grid;justify-items:center;text-align:center;gap:.4rem}
+.foot-top .sig{font-size:clamp(2.6rem,5vw,4rem);transform:rotate(-6deg);margin-bottom:-1.2rem}
+.foot-statement{font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:clamp(2.4rem,6vw,5.4rem);line-height:.88;letter-spacing:-.02em}
+.foot-statement .serif{color:var(--red-hot);font-size:1.05em}
+.foot-mid{position:relative;display:grid;grid-template-columns:1fr minmax(0,1.4fr) 1fr;align-items:center;gap:1rem}
+.foot-col{display:grid;justify-items:center;text-align:center;gap:.6rem}
+.foot-col h2{font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-night)}
+.foot-col ul{display:grid;gap:.1rem}
+.foot-col a{font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:1.15rem;line-height:1.2;text-decoration:none}
+.foot-col a:hover{color:var(--red-hot)}
+.foot-col .to-top{margin-top:.8rem;color:var(--red-hot);font-size:.85rem}
+.foot-figure{align-self:end;position:relative;height:clamp(22rem,62vh,44rem)}
+.foot-figure .slot{position:absolute;inset:0;background-color:transparent}
+.foot-figure .slot img{object-position:50% 100%}
+.foot-figure .slot:not(.has-img){background-image:none}
+.foot-figure .slot:not(.has-img)::before{content:"";position:absolute;left:50%;bottom:0;width:70%;height:92%;transform:translateX(-50%);border-radius:48% 48% 0 0/38% 38% 0 0;background:rgba(242,241,236,.08)}
+.foot-figure .slot:not(.has-img)::after{color:var(--mute-night)}
+.foot-figure .btn{position:absolute;left:50%;bottom:1.25rem;transform:translateX(-50%);z-index:3;white-space:nowrap}
+.foot-mq{position:relative;margin-inline:calc(clamp(1.25rem,4vw,3.5rem) * -1);padding-block:1rem 1.2rem;box-shadow:inset 0 1px 0 rgba(242,241,236,.14)}
+.foot-mq .mq-item b{color:var(--cream);font-size:clamp(.9rem,1.3vw,1.15rem)}
+.foot-mq .mq-item.lg1 b{font-size:clamp(1.05rem,1.6vw,1.4rem)}
+.legal{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 3rem;padding-top:1rem;font-size:.72rem;line-height:1.45;color:var(--ink)}
+.legal p{max-width:52rem}
+.legal b{font-weight:800}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:1080px){
+  .fan{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter) * -1) calc(var(--gutter-r) * -1);padding-inline:var(--gutter) var(--gutter-r);gap:1rem;scrollbar-width:none}
+  .fan>li,.fan:hover>li,.fan:focus-within>li,.fan>li:hover,.fan>li:focus-within{--w:min(15rem,70vw);margin:0;transform:none;scroll-snap-align:start}
+}
+@media (max-width:900px){
+  .suit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sec-head{grid-template-columns:1fr}
+  .filme-grid{grid-template-columns:1fr}
+  .foot-mid{grid-template-columns:1fr 1fr}
+  .foot-figure{grid-column:1/-1;grid-row:1}
+}
+@media (max-width:760px){
+  .nav{grid-template-columns:1fr auto}
+  .mono{display:none}
+  .nav-diario .roll{display:none}
+  .nav-diario{padding:0 .8rem}
+  .duo{min-height:auto;padding-block:5rem 4rem;place-items:stretch}
+  .duo-img{position:relative;width:auto;height:46vw}
+  .duo-img.left,.duo-img.right{left:auto;right:auto}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .duo-text{grid-column:1/-1;grid-row:2;margin-top:2.5rem;max-width:none;gap:1.25rem}
+  .duo-col h2 .serif,.duo-col h2 .sans{font-size:clamp(1.7rem,8.4vw,2.4rem)}
+  .duo-col h2 .brush{font-size:2.6rem}
+  .duo-col p{max-width:none;font-size:.9rem}
+  .swash{top:15rem}
+  .menu-inner{grid-template-columns:1fr}
+  .menu-art{display:none}
+  .next{bottom:calc(env(safe-area-inset-bottom,0px) + 5.25rem)}
+  .hero-hint{left:var(--gutter);right:var(--gutter-r);justify-content:space-between}
+  .collage .c1{margin-top:2rem}
+  .sticker{left:-.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+  .hero-track{height:auto}
+  .hero-pin{position:relative;height:min(100svh,900px)}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="notch" clipPathUnits="objectBoundingBox">
+      <path d="M0.02,0 H0.98 C0.991,0 1,0.01 1,0.02 V0.82 C1,0.831 0.991,0.84 0.98,0.84 H0.66 C0.63,0.84 0.612,0.85 0.596,0.87 L0.55,0.975 C0.54,0.992 0.525,1 0.5,1 H0.02 C0.009,1 0,0.991 0,0.98 V0.02 C0,0.009 0.009,0 0.02,0 Z"/>
+    </clipPath>
+    <clipPath id="plate" clipPathUnits="objectBoundingBox">
+      <path d="M0,0.08 C0,0.055 0.012,0.04 0.03,0.04 H0.36 C0.385,0.04 0.4,0.032 0.415,0.018 L0.425,0.01 C0.437,0.003 0.45,0 0.47,0 H0.53 C0.55,0 0.563,0.003 0.575,0.01 L0.585,0.018 C0.6,0.032 0.615,0.04 0.64,0.04 H0.97 C0.988,0.04 1,0.055 1,0.08 V0.975 C1,0.99 0.988,1 0.97,1 H0.03 C0.012,1 0,0.99 0,0.975 Z"/>
+    </clipPath>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.3 9.3 4.3 12 6c2.7-1.7 5.5-1.7 8-.5V19c-2.5-1.2-5.3-1.2-8 .5-2.7-1.7-5.5-1.7-8-.5V5.5zM12 6v13.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="9.5" r="1.7" fill="currentColor"/><path d="M4 17l5-4.5 3.5 3 3-2.5L20 16.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v4.5a5 5 0 0 1-10 0V4zM7 6H4.5a3 3 0 0 0 3 3.6M17 6h2.5a3 3 0 0 1-3 3.6M12 13.5V17M8.5 20h7M9.5 17h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-web" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M24 4v40M4 24h40M9.9 9.9l28.2 28.2M38.1 9.9L9.9 38.1"/><path d="M24 11.5l8.8 3.7 3.7 8.8-3.7 8.8-8.8 3.7-8.8-3.7-3.7-8.8 3.7-8.8z"/><path d="M24 17.5l4.6 1.9 1.9 4.6-1.9 4.6-4.6 1.9-4.6-1.9-1.9-4.6 1.9-4.6z"/><path d="M24 5.5l13 5.5 5.5 13-5.5 13-13 5.5-13-5.5-5.5-13 5.5-13z"/></g></symbol>
+    <symbol id="i-disc" viewBox="0 0 60 40"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="30" cy="20" rx="27" ry="17"/><ellipse cx="30" cy="20" rx="8" ry="5"/><path d="M12 9c5-3 11-4.5 18-4.5M48 31c-5 3-11 4.5-18 4.5" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-mouse" viewBox="0 0 24 24"><rect x="6.5" y="3" width="11" height="18" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-squig" viewBox="0 0 412 26" preserveAspectRatio="none"><path d="M0 4h70c6 0 11.5 2.4 15.6 6.6l8.5 8.7A22 22 0 0 0 110 25.8h72.7c6 0 11.8-2.5 16-6.9l6.4-6.9A22 22 0 0 1 221.3 5h76.8a22 22 0 0 1 16.8 7.9l4.4 5.2A22 22 0 0 0 336 26H412" fill="none" stroke="currentColor" stroke-width="5" vector-effect="non-scaling-stroke"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="scrollbar" aria-hidden="true"><span></span></div>
+
+<header class="nav" data-on="light">
+  <a class="brand" href="#inicio" data-jump aria-label="Peter Parker, início"><span class="b1">Peter</span><span class="b2">Parker</span></a>
+  <svg class="mono" viewBox="0 0 40 40" aria-hidden="true"><path fill-rule="evenodd" d="M5 5h9a7 7 0 0 1 0 14h-4v15H5V5zm5 4.5v5h4a2.5 2.5 0 0 0 0-5h-4z"/><path fill-rule="evenodd" d="M19 11h9a7 7 0 0 1 0 14h-4v10h-5V11zm5 4.5v5h4a2.5 2.5 0 0 0 0-5h-4z" opacity=".55"/></svg>
+  <div class="nav-right">
+    <a class="btn nav-diario" href="#diario" data-jump aria-label="Diário"><svg aria-hidden="true"><use href="#i-book"/></svg><span class="roll" aria-hidden="true">Diário</span></a>
+    <button class="ham" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden data-lenis-prevent>
+  <div class="menu-inner dark">
+    <div class="menu-art" aria-hidden="true">
+      <div class="menu-col">
+        <div class="slot" data-label="galeria-1.jpg"><img data-slot="galeria-1" alt=""></div>
+        <div class="slot" data-label="galeria-3.jpg"><img data-slot="galeria-3" alt=""></div>
+        <div class="slot" data-label="galeria-5.jpg"><img data-slot="galeria-5" alt=""></div>
+        <div class="slot" data-label="galeria-1.jpg"><img data-slot="galeria-1" alt=""></div>
+        <div class="slot" data-label="galeria-3.jpg"><img data-slot="galeria-3" alt=""></div>
+        <div class="slot" data-label="galeria-5.jpg"><img data-slot="galeria-5" alt=""></div>
+      </div>
+      <div class="menu-col">
+        <div class="slot" data-label="galeria-2.jpg"><img data-slot="galeria-2" alt=""></div>
+        <div class="slot" data-label="galeria-4.jpg"><img data-slot="galeria-4" alt=""></div>
+        <div class="slot" data-label="galeria-6.jpg"><img data-slot="galeria-6" alt=""></div>
+        <div class="slot" data-label="galeria-2.jpg"><img data-slot="galeria-2" alt=""></div>
+        <div class="slot" data-label="galeria-4.jpg"><img data-slot="galeria-4" alt=""></div>
+        <div class="slot" data-label="galeria-6.jpg"><img data-slot="galeria-6" alt=""></div>
+      </div>
+    </div>
+    <div class="menu-main">
+      <nav class="menu-links" aria-label="Seções">
+        <a href="#inicio" data-jump data-sec="inicio" aria-label="Início"><span class="roll" aria-hidden="true">Início</span><svg class="squig" aria-hidden="true"><use href="#i-squig"/></svg></a>
+        <a href="#cenas" data-jump data-sec="cenas" aria-label="Cenas"><span class="roll" aria-hidden="true">Cenas</span><svg class="squig" aria-hidden="true"><use href="#i-squig"/></svg></a>
+        <a href="#trajes" data-jump data-sec="trajes" aria-label="Trajes"><span class="roll" aria-hidden="true">Trajes</span><svg class="squig" aria-hidden="true"><use href="#i-squig"/></svg></a>
+        <a href="#filme" data-jump data-sec="filme" aria-label="O filme"><span class="roll" aria-hidden="true">O filme</span><svg class="squig" aria-hidden="true"><use href="#i-squig"/></svg></a>
+        <a href="#diario" data-jump data-sec="diario" aria-label="Diário"><span class="roll" aria-hidden="true">Diário</span><svg class="squig" aria-hidden="true"><use href="#i-squig"/></svg></a>
+      </nav>
+      <div class="menu-foot">
+        <p>Fanzine de fã, sem ligação com a Marvel ou a Sony</p>
+        <!-- Troque os href pelos perfis reais do fanzine -->
+        <ul aria-label="Redes do fanzine">
+          <li><a href="#social">Instagram</a></li>
+          <li><a href="#social">TikTok</a></li>
+          <li><a href="#social">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jump" aria-hidden="true"><div class="jump-label"><span>indo para</span><b data-jump-to>Início</b></div></div>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero-track" id="inicio" aria-label="Peter Parker">
+    <div class="hero-pin" data-surface="light">
+      <div class="web-bg" data-web="dark" aria-hidden="true"></div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="hm-row serif" data-hm="1">Com grandes poderes&nbsp;&nbsp;Com grandes poderes&nbsp;&nbsp;Com grandes poderes&nbsp;&nbsp;</div>
+        <div class="hm-row sans" data-hm="-1">vêm grandes responsabilidades&nbsp;&nbsp;vêm grandes responsabilidades&nbsp;&nbsp;</div>
+      </div>
+      <div class="hero-stage">
+        <div class="hero-frame"></div>
+        <canvas class="hero-gl" role="img" aria-label="Retrato de Peter Parker. Passe o mouse para revelar o Homem-Aranha de máscara."></canvas>
+      </div>
+      <h1 class="sr">Peter Parker, o Homem-Aranha de Um Novo Dia</h1>
+
+      <aside class="next" aria-labelledby="next-title">
+        <svg class="next-frame" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path vector-effect="non-scaling-stroke" d="M0.08,0.06 H0.36 C0.42,0.06 0.45,0.05 0.48,0.03 L0.52,0.012 C0.55,0.003 0.58,0 0.63,0 H0.92 C0.96,0 1,0.012 1,0.04 V0.97 C1,0.987 0.96,1 0.92,1 H0.08 C0.04,1 0,0.987 0,0.97 V0.09 C0,0.072 0.04,0.06 0.08,0.06 Z"/></svg>
+        <h2 class="cap" id="next-title">Próximo</h2>
+        <svg class="next-icon" aria-hidden="true"><use href="#i-disc"/></svg>
+        <p class="next-title">Um Novo Dia em 4K e Blu-ray</p>
+        <p class="next-days"><span data-days>50</span><small>dias</small></p>
+        <hr>
+        <svg class="next-icon" style="width:1.8rem;height:1.8rem" aria-hidden="true"><use href="#i-web"/></svg>
+        <p class="next-since">No MCU<br>desde 2016</p>
+      </aside>
+
+      <div class="hero-hint">
+        <span class="mouse-only" style="display:inline-flex;align-items:center;gap:.6rem"><svg aria-hidden="true"><use href="#i-mouse"/></svg>Passe o mouse no rosto</span>
+        <button class="hero-touch" type="button" aria-pressed="false" aria-label="Pintar o retrato com o dedo">Pintar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement dark inner" data-surface="dark" aria-label="Sobre o fanzine">
+    <p class="impact" data-lines><span class="serif">Salvar</span> o bairro, perder o ônibus, começar <span class="serif">de novo.</span> Quatro anos depois do feitiço, ninguém lembra quem é <span class="serif">Peter Parker.</span></p>
+    <div class="sign">
+      <svg aria-hidden="true"><use href="#i-web"/></svg>
+      <span class="cap">O Homem-Aranha de Tom Holland, de 2016 a 2026</span>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip dark" id="cenas" data-surface="dark" aria-label="Cenas">
+    <div class="strip-pin">
+      <div class="strip-view">
+        <div class="strip-track">
+          <div class="g-col high">
+            <figure class="g-item" style="--w:clamp(11rem,17vw,16rem);--ar:3/4"><figcaption class="g-cap cap">Queens, 2017</figcaption><div class="slot" data-slot-target="galeria-1" data-label="galeria-1.jpg&#10;cena de De Volta ao Lar"><img data-slot="galeria-1" alt="Cena de Homem-Aranha: De Volta ao Lar"></div></figure>
+            <figure class="g-item" style="--w:clamp(9rem,13vw,12rem);--ar:1/1;margin-left:3rem"><figcaption class="g-cap cap">Nova York, 2018</figcaption><div class="slot" data-slot-target="galeria-2" data-label="galeria-2.jpg&#10;cena de Guerra Infinita"><img data-slot="galeria-2" alt="Cena de Vingadores: Guerra Infinita"></div></figure>
+          </div>
+          <div class="callout">
+            <p>Quatro anos depois do feitiço, Peter recomeça <b>sozinho</b>. Sem Stark, sem Ned, sem MJ por perto.</p>
+            <span class="sig" aria-hidden="true">Peter Parker</span>
+          </div>
+          <div class="g-col low">
+            <figure class="g-item" style="--w:clamp(16rem,30vw,28rem);--ar:4/3"><figcaption class="g-cap cap">Nova York, 2026</figcaption><div class="slot" data-slot-target="galeria-3" data-label="galeria-3.jpg&#10;cena de Um Novo Dia"><img data-slot="galeria-3" alt="Cena de Homem-Aranha: Um Novo Dia"><span class="pill"><span><svg aria-hidden="true"><use href="#i-trophy"/></svg></span><span>Nº 1 de 2026</span></span></div></figure>
+          </div>
+          <div class="g-col high">
+            <figure class="g-item" style="--w:clamp(10rem,14vw,13rem);--ar:4/5"><figcaption class="g-cap cap">Veneza, 2019</figcaption><div class="slot" data-slot-target="galeria-4" data-label="galeria-4.jpg&#10;cena de Longe de Casa"><img data-slot="galeria-4" alt="Cena de Homem-Aranha: Longe de Casa"></div></figure>
+            <figure class="g-item" style="--w:clamp(12rem,19vw,18rem);--ar:3/2;margin-left:5rem"><figcaption class="g-cap cap">Londres, 2019</figcaption><div class="slot" data-slot-target="galeria-5" data-label="galeria-5.jpg&#10;cena de Longe de Casa"><img data-slot="galeria-5" alt="Cena de Homem-Aranha: Longe de Casa em Londres"></div></figure>
+          </div>
+          <div class="g-col low">
+            <figure class="g-item" style="--w:clamp(11rem,16vw,15rem);--ar:3/4"><figcaption class="g-cap cap">Nova York, 2021</figcaption><div class="slot" data-slot-target="galeria-6" data-label="galeria-6.jpg&#10;cena de Sem Volta Para Casa"><img data-slot="galeria-6" alt="Cena de Homem-Aranha: Sem Volta Para Casa"></div></figure>
+          </div>
+          <div class="callout">
+            <p>Em Um Novo Dia, o traje sai da <b>máquina de costura</b> do próprio Peter.</p>
+            <span class="sig" aria-hidden="true">Peter Parker</span>
+          </div>
+          <div class="g-col high">
+            <figure class="g-item" style="--w:clamp(15rem,26vw,24rem);--ar:16/10"><figcaption class="g-cap cap">Bastidores, 2026</figcaption><div class="slot" data-slot-target="galeria-7" data-label="galeria-7.jpg&#10;bastidores de Um Novo Dia"><img data-slot="galeria-7" alt="Bastidores de Homem-Aranha: Um Novo Dia"></div></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUO -->
+  <section class="duo" id="mascara" data-surface="light" aria-label="Com e sem máscara">
+    <div class="web-bg" data-web="dark" aria-hidden="true"></div>
+    <div class="duo-img left slot" data-slot-target="com-mascara" data-label="com-mascara.jpg&#10;close de perfil, de máscara"><img data-slot="com-mascara" alt="Homem-Aranha de máscara, de perfil"></div>
+    <div class="duo-img right slot" data-slot-target="sem-mascara" data-label="sem-mascara.jpg&#10;close de perfil, sem máscara"><img data-slot="sem-mascara" alt="Peter Parker sem máscara, de perfil"></div>
+    <div class="duo-text">
+      <div class="duo-col">
+        <h2><span class="serif">Com</span><span class="sans">máscara</span><span class="brush" aria-hidden="true">com</span></h2>
+        <p>Os trajes, as lutas e os números de cada filme.</p>
+        <a class="sq" href="#trajes" data-jump aria-label="Ver os trajes"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="duo-col">
+        <h2><span class="serif">Sem</span><span class="sans">máscara</span></h2>
+        <p>Peter, os amigos que esqueceram dele e o elenco por trás.</p>
+        <a class="sq" href="#filme" data-jump aria-label="Ver o filme e o elenco"><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+  <section class="wide" data-surface="dark" aria-label="Foto">
+    <div class="slot" data-slot-target="foto-larga" data-label="foto-larga.jpg&#10;foto horizontal grande, 2400 × 1350"><img data-slot="foto-larga" alt="Peter Parker com o traje de Um Novo Dia"></div>
+    <div class="blocks" aria-hidden="true"><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- TRAJES -->
+  <section class="trajes inner dark" id="trajes" data-surface="dark" aria-labelledby="trajes-title" style="background:var(--black)">
+    <div class="sec-head">
+      <h2 class="h2" id="trajes-title"><span class="sans">Trajes</span><span class="serif">hall da fama</span></h2>
+      <p>De Guerra Civil a Um Novo Dia, cada filme trouxe um traje novo. Passe o mouse ou toque para ver a cena de cada um.</p>
+    </div>
+    <ul class="suit-grid" data-suits></ul>
+  </section>
+  <section class="see-more" data-surface="dark" aria-label="Bastidores dos trajes">
+    <svg aria-hidden="true"><use href="#i-web"/></svg>
+    <p>Como Peter costurou o próprio traje em Um Novo Dia</p>
+    <a class="btn" href="#traje-novo" data-post-link="traje-novo" aria-label="Ler sobre o traje novo"><span class="roll" aria-hidden="true">Ler no diário</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </section>
+
+  <!-- FILME -->
+  <section class="filme inner" id="filme" data-surface="light" aria-labelledby="filme-title">
+    <div class="filme-grid">
+      <div class="filme-text">
+        <h2 class="h2" id="filme-title"><span class="sans">Um Novo Dia</span><span class="serif">o filme</span></h2>
+        <p>Quatro anos depois do feitiço de Sem Volta Para Casa, Peter protege Nova York sozinho. O excesso de trabalho começa a mexer com os poderes dele, e uma ameaça nova chega à cidade.</p>
+        <dl class="facts">
+          <div><dt>Estreia no Brasil</dt><dd>29 jul 2026</dd></div>
+          <div><dt>Duração</dt><dd>2h30</dd></div>
+          <div><dt>Bilheteria mundial</dt><dd>US$ 2,5 bilhões até outubro</dd></div>
+          <div><dt>Abertura nos EUA</dt><dd>US$ 360 milhões</dd></div>
+          <div><dt>Direção</dt><dd>Destin Daniel Cretton</dd></div>
+          <div><dt>Trilha</dt><dd>Michael Giacchino</dd></div>
+          <div><dt>Em casa</dt><dd>Digital nos EUA desde 6 out. 4K e Blu-ray em 15 dez</dd></div>
+        </dl>
+        <a class="btn btn--dark" href="#numeros" data-post-link="numeros" aria-label="Ler os números do filme"><span class="roll" aria-hidden="true">Ler os números</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="collage">
+        <div class="slot c1" data-slot-target="filme-1" data-label="filme-1.jpg&#10;vertical, 3:4"><img data-slot="filme-1" alt="Cena de Um Novo Dia"></div>
+        <div class="slot c2" data-slot-target="filme-2" data-label="filme-2.jpg&#10;vertical, 4:5"><img data-slot="filme-2" alt="Cena de Um Novo Dia"></div>
+        <div class="slot c3" data-slot-target="filme-3" data-label="filme-3.jpg&#10;horizontal, 16:7"><img data-slot="filme-3" alt="Cena de Um Novo Dia"></div>
+        <div class="sticker" data-sticker aria-hidden="true"><span>US$</span><b>2,5 bi</b><span>de bilheteria</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELENCO -->
+  <section class="elenco" id="elenco" data-surface="light" aria-labelledby="elenco-title">
+    <div class="web-bg" data-web="dark" aria-hidden="true"></div>
+    <div class="sec-head inner">
+      <h2 class="h2" id="elenco-title"><span class="sans">Elenco</span><span class="serif">&amp; criadores</span></h2>
+      <p>Quem está na frente e atrás da câmera em Um Novo Dia.</p>
+    </div>
+    <span class="swash" aria-hidden="true">Elenco</span>
+    <div class="marquee" data-dir="1" data-speed="40">
+      <div class="mq-track">
+        <ul class="mq-set" aria-label="Elenco e equipe">
+          <li class="mq-item lg2"><b>Tom Holland</b><i>Peter Parker</i></li>
+          <li class="mq-item lg1"><b>Zendaya</b><i>MJ</i></li>
+          <li class="mq-item lg3"><b>Jacob Batalon</b><i>Ned Leeds</i></li>
+          <li class="mq-item lg4"><b>Jon Bernthal</b><i>Frank Castle</i></li>
+          <li class="mq-item lg5"><b>Mark Ruffalo</b><i>Bruce Banner</i></li>
+          <li class="mq-item lg2"><b>Sadie Sink</b><i>papel surpresa</i></li>
+          <li class="mq-item lg1"><b>Tramell Tillman</b><i>Bill Metzger</i></li>
+          <li class="mq-item lg3"><b>Destin Daniel Cretton</b><i>direção</i></li>
+          <li class="mq-item lg4"><b>Michael Giacchino</b><i>trilha</i></li>
+          <li class="mq-item lg5"><b>McKenna e Sommers</b><i>roteiro</i></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIÁRIO -->
+  <section class="diario inner" id="diario" data-surface="light" aria-labelledby="diario-title">
+    <div class="web-bg" data-web="dark" aria-hidden="true"></div>
+    <h2 class="h2" id="diario-title" style="position:relative;z-index:2"><span class="sans">O que rola</span><span class="serif">no diário</span></h2>
+    <ul class="fan" data-fan></ul>
+    <div class="follow">
+      <p>Siga o fanzine</p>
+      <!-- Troque os href pelos perfis reais -->
+      <ul><li><a href="#social">TikTok</a></li><li><a href="#social">Instagram</a></li><li><a href="#social">YouTube</a></li><li><a href="#social">Letterboxd</a></li></ul>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot" data-surface="light">
+  <div class="foot-plate" data-surface="dark" data-surface-offset="70">
+    <div class="foot-top">
+      <span class="sig" aria-hidden="true">Peter Parker</span>
+      <p class="foot-statement">Seu <span class="serif">amigão</span><br>da <span class="serif">vizinhança.</span></p>
+    </div>
+    <div class="foot-mid dark" style="background:transparent">
+      <nav class="foot-col" aria-label="Páginas">
+        <h2>Páginas</h2>
+        <ul>
+          <li><a href="#inicio" data-jump>Início</a></li>
+          <li><a href="#cenas" data-jump>Cenas</a></li>
+          <li><a href="#trajes" data-jump>Trajes</a></li>
+          <li><a href="#filme" data-jump>O filme</a></li>
+          <li><a href="#diario" data-jump>Diário</a></li>
+        </ul>
+      </nav>
+      <div class="foot-figure">
+        <div class="slot contain" data-slot-target="rodape" data-label="rodape.png&#10;recorte de máscara, fundo transparente"><img data-slot="rodape" alt="Homem-Aranha de máscara"></div>
+        <a class="btn" href="#inicio" data-jump aria-label="Voltar ao topo"><span class="roll" aria-hidden="true">Voltar ao topo</span></a>
+      </div>
+      <nav class="foot-col" aria-label="Redes">
+        <h2>Siga</h2>
+        <!-- Troque os href pelos perfis reais -->
+        <ul>
+          <li><a href="#social">TikTok</a></li>
+          <li><a href="#social">Instagram</a></li>
+          <li><a href="#social">YouTube</a></li>
+          <li><a href="#social">Letterboxd</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="marquee foot-mq" data-dir="-1" data-speed="30" aria-hidden="true">
+      <div class="mq-track">
+        <ul class="mq-set">
+          <li class="mq-item lg2"><b>Guerra Civil</b></li>
+          <li class="mq-item lg1"><b>De Volta ao Lar</b></li>
+          <li class="mq-item lg3"><b>Guerra Infinita</b></li>
+          <li class="mq-item lg4"><b>Ultimato</b></li>
+          <li class="mq-item lg5"><b>Longe de Casa</b></li>
+          <li class="mq-item lg2"><b>Sem Volta Para Casa</b></li>
+          <li class="mq-item lg1"><b>Um Novo Dia</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="legal">
+    <p><b>© 2026 Peter Parker Fanzine.</b> Feito por fã, sem fins lucrativos.</p>
+    <p>Homem-Aranha e personagens relacionados pertencem à Marvel e à Sony Pictures. Este fanzine não tem ligação com os estúdios.</p>
+  </div>
+</footer>
+
+<div class="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title" hidden>
+  <div class="reader-scrim" data-close></div>
+  <article class="reader-panel" data-lenis-prevent>
+    <div class="reader-bar"><span class="post-tag" data-r="tag"></span><button type="button" class="reader-close" data-close aria-label="Fechar texto"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="slot reader-art" data-r="art" data-label=""><img data-r-img alt=""></div>
+    <h2 id="reader-title" data-r="title"></h2>
+    <p class="reader-meta"><time data-r="date"></time><span data-r="read"></span></p>
+    <div class="reader-body" data-r="body"></div>
+    <button type="button" class="reader-next" data-r="next"><span>Próximo texto</span><b></b></button>
+  </article>
+</div>
+
+
+<script src="js/lenis.min.js"></script>
+<script>
+(() => {
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const smooth = t => t * t * (3 - 2 * t);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canHover = matchMedia("(hover: hover)").matches;
+const TAU = Math.PI * 2;
+
+/* ================= IMAGE SLOTS =================
+   Cada espaço procura o arquivo em imagens/<nome> no projeto;
+   se não existir, fica vazio com o nome do arquivo.              */
+const SLOTS = {
+  "hero-rosto": "imagens/hero-rosto.png", "hero-mascara": "imagens/hero-mascara.png",
+  "galeria-1": "imagens/galeria-1.jpg", "galeria-2": "imagens/galeria-2.jpg", "galeria-3": "imagens/galeria-3.jpg", "galeria-4": "imagens/galeria-4.jpg",
+  "galeria-5": "imagens/galeria-5.jpg", "galeria-6": "imagens/galeria-6.jpg", "galeria-7": "imagens/galeria-7.jpg",
+  "com-mascara": "imagens/com-mascara.jpg", "sem-mascara": "imagens/sem-mascara.jpg", "foto-larga": "imagens/foto-larga.jpg",
+  "filme-1": "imagens/filme-1.jpg", "filme-2": "imagens/filme-2.jpg", "filme-3": "imagens/filme-3.jpg",
+  "rodape": "imagens/rodape.png"
+};
+const SUITS = [
+  { name: "Caseiro", year: 2016, film: "Capitão América: Guerra Civil" },
+  { name: "Stark", year: 2016, film: "Guerra Civil e De Volta ao Lar" },
+  { name: "Aranha de Ferro", year: 2018, film: "Vingadores: Guerra Infinita" },
+  { name: "Furtivo", year: 2019, film: "Longe de Casa" },
+  { name: "Atualizado", year: 2019, film: "Longe de Casa" },
+  { name: "Integrado", year: 2021, film: "Sem Volta Para Casa" },
+  { name: "Final", year: 2021, film: "Sem Volta Para Casa" },
+  { name: "Um Novo Dia", year: 2026, film: "Feito em casa, com a Fabricadora" }
+];
+SUITS.forEach((s, i) => { SLOTS[`traje-${i + 1}`] = `imagens/traje-${i + 1}.png`; SLOTS[`traje-${i + 1}-cena`] = `imagens/traje-${i + 1}-cena.jpg`; });
+
+const POSTS = [
+  { id: "quatro-anos", slot: "post-1", tag: "Filme", title: "Quatro anos depois: onde Um Novo Dia começa", date: "20 out 2026", read: "4 min de leitura", body: `
+<p>No fim de <cite>Sem Volta Para Casa</cite>, o feitiço de Doutor Estranho apaga Peter Parker da memória do mundo. MJ e Ned não lembram dele. Ninguém sabe quem está por trás da máscara.</p>
+<p><cite>Um Novo Dia</cite> começa quatro anos depois. Peter protege Nova York sozinho, sem os recursos de Tony Stark e sem ninguém para dividir o peso. O filme leva essa solidão a sério: o excesso de trabalho começa a afetar o corpo e os poderes dele.</p>
+<h3>Sem spoiler, prometido</h3>
+<p>A direção é de Destin Daniel Cretton, de <cite>Shang-Chi</cite>. O roteiro é de Chris McKenna e Erik Sommers, a mesma dupla dos três filmes anteriores, e a trilha é de Michael Giacchino.</p>
+<p>No Brasil, o filme estreou em 29 de julho de 2026, dois dias antes dos Estados Unidos.</p>` },
+  { id: "traje-novo", slot: "post-2", tag: "Trajes", title: "O traje feito em casa", date: "12 out 2026", read: "3 min de leitura", body: `
+<p>Sem Stark, sem nanotecnologia. Em <cite>Um Novo Dia</cite>, Peter constrói o próprio traje, e ele foi pensado para parecer feito em casa.</p>
+<p>O desenho lembra o traje que aparece no fim de <cite>Sem Volta Para Casa</cite> e também puxa detalhes dos trajes de Tobey Maguire e Andrew Garfield. Tom Holland participou do design.</p>
+<h3>Sem retoque digital</h3>
+<p>A equipe não usou efeitos visuais para alisar o traje. Por isso dá para ver as rugas do tecido e o rosto de Holland se mexendo por baixo da máscara. Ele passa cerca de 80% do filme com o traje e disse que é o mais confortável que já usou.</p>
+<p>Na história, quem fabrica e conserta o traje é a Fabricadora: uma máquina caseira que junta máquina de costura e impressora 3D.</p>` },
+  { id: "numeros", slot: "post-3", tag: "Bilheteria", title: "Os números de Um Novo Dia", date: "26 out 2026", read: "3 min de leitura", body: `
+<p>O filme abriu com US$ 360 milhões no primeiro fim de semana nos Estados Unidos, segundo o The Numbers.</p>
+<p>Em agosto, a Deadline registrou que ele foi o segundo filme mais rápido da história a chegar a US$ 2 bilhões no mundo. Em outubro de 2026, a soma mundial já passava de US$ 2,5 bilhões.</p>
+<p>Com isso, <cite>Um Novo Dia</cite> virou a maior bilheteria de um filme do Homem-Aranha e o filme mais visto de 2026. O orçamento foi de US$ 225 milhões.</p>` },
+  { id: "dez-anos", slot: "post-4", tag: "Linha do tempo", title: "Oito trajes em dez anos", date: "2 out 2026", read: "4 min de leitura", body: `
+<p>O Peter de Tom Holland estreou em 2016 e trocou de traje quase a cada filme. A ordem:</p>
+<ol>
+<li><b>2016</b><span>O traje caseiro, de moletom e óculos, aparece em <cite>Capitão América: Guerra Civil</cite>.</span></li>
+<li><b>2016</b><span>Tony Stark entrega o primeiro traje tecnológico, usado também em <cite>De Volta ao Lar</cite>.</span></li>
+<li><b>2018</b><span>A Aranha de Ferro, com pernas mecânicas, em <cite>Guerra Infinita</cite>.</span></li>
+<li><b>2019</b><span>O traje furtivo e o traje atualizado, os dois em <cite>Longe de Casa</cite>.</span></li>
+<li><b>2021</b><span>O traje integrado e o traje final, costurado à mão, em <cite>Sem Volta Para Casa</cite>.</span></li>
+<li><b>2026</b><span>O traje de <cite>Um Novo Dia</cite>, feito por Peter com a Fabricadora.</span></li>
+</ol>` },
+  { id: "em-casa", slot: "post-5", tag: "Notícias", title: "Onde assistir Um Novo Dia em casa", date: "8 out 2026", read: "2 min de leitura", body: `
+<p>Nos Estados Unidos, o filme chegou ao digital em 6 de outubro de 2026, para alugar ou comprar no Apple TV, no Prime Video e na Fandango.</p>
+<p>As versões em 4K, Blu-ray e DVD saem em 15 de dezembro de 2026.</p>
+<p>Ainda não há data para o streaming por assinatura. Quando sair a data brasileira, atualizamos este texto.</p>` }
+];
+POSTS.forEach(p => { SLOTS[p.slot] = `imagens/${p.slot}.jpg`; });
+// Troque este valor depois de substituir arquivos em imagens/ para o navegador não usar a versão antiga.
+const IMG_VERSION = "2026-10-26d";
+
+const slotURL = {};
+const probe = src => new Promise(res => { const i = new Image(); i.onload = () => res(true); i.onerror = () => res(false); i.src = src; });
+function applySlot(name, root = document) {
+  const url = slotURL[name] || "";
+  $$(`img[data-slot="${name}"]`, root).forEach(img => {
+    const box = img.closest(".slot");
+    if (url) { if (img.getAttribute("src") !== url) img.src = url; box && box.classList.add("has-img"); }
+    else { img.removeAttribute("src"); box && box.classList.remove("has-img"); }
+  });
+  if (name === "hero-rosto" || name === "hero-mascara") Hero.setSource(name, url);
+}
+async function loadSlot(name) {
+  const url = `${SLOTS[name]}?v=${IMG_VERSION}`;
+  slotURL[name] = (await probe(url)) ? url : "";
+  applySlot(name);
+}
+
+/* ================= WEB BACKGROUND ================= */
+function makeWeb(color) {
+  const c = document.createElement("canvas"); c.width = 1800; c.height = 1300; const x = c.getContext("2d");
+  const cx = c.width * 0.82, cy = -c.height * 0.12, spokes = 26, R = Math.hypot(c.width, c.height) * 1.1;
+  x.strokeStyle = color; x.lineWidth = 1.2; x.lineCap = "round";
+  const ang = []; for (let i = 0; i < spokes; i++) ang.push((i / spokes) * TAU + Math.sin(i * 7.1) * 0.05);
+  ang.forEach(a => { x.beginPath(); x.moveTo(cx, cy); x.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); x.stroke(); });
+  for (let k = 1; k < 34; k++) {
+    const r = 60 * Math.pow(k, 1.32);
+    x.beginPath();
+    for (let i = 0; i <= spokes; i++) {
+      const a0 = ang[i % spokes], a1 = ang[(i + 1) % spokes] + (i + 1 === spokes ? TAU : 0);
+      const r0 = r * (1 + Math.sin(k * 1.7 + i) * 0.03), r1 = r * (1 + Math.sin(k * 1.7 + i + 1) * 0.03);
+      const p0 = [cx + Math.cos(a0) * r0, cy + Math.sin(a0) * r0], p1 = [cx + Math.cos(a1) * r1, cy + Math.sin(a1) * r1];
+      const am = (a0 + a1) / 2, sag = r * 0.93;
+      if (i === 0) x.moveTo(p0[0], p0[1]);
+      x.quadraticCurveTo(cx + Math.cos(am) * sag, cy + Math.sin(am) * sag, p1[0], p1[1]);
+      if (i === spokes - 1) break;
+    }
+    x.stroke();
+  }
+  return `url(${c.toDataURL("image/png")})`;
+}
+const webDark = makeWeb("rgba(20,22,28,.075)"), webLight = makeWeb("rgba(242,241,236,.06)");
+$$('[data-web="dark"]').forEach(el => (el.style.backgroundImage = webDark));
+document.documentElement.style.setProperty("--web-light", webLight);
+
+/* ================= HERO (WebGL) ================= */
+const Hero = (() => {
+  let cv = $(".hero-gl"); const stage = $(".hero-stage");
+  let trail = [], mask = null, layer = null;
+  const S = { mx: 0.5, my: 0.55, pmx: 0.5, pmy: 0.55, vx: 0, vy: 0, active: 0, lastMove: -1e9, visible: true, painting: false, t0: performance.now() };
+  const src = { "hero-rosto": null, "hero-mascara": null };
+  let gl = null, prTrail, prComp, buf, texA, texB, fb = [], tt = [], cur = 0, W = 0, H = 0, TW = 0, TH = 0, dims = { A: [1000, 1150], B: [1000, 1150] }, ctx2d = null;
+
+  function placeholder(kind) {
+    const c = document.createElement("canvas"); c.width = 1000; c.height = 1150; const x = c.getContext("2d");
+    const fill = kind === "A" ? "#cfcdc6" : "#18254a", txt = kind === "A" ? "#5f6168" : "#ff3347";
+    const g = x.createLinearGradient(0, 300, 0, 1150); g.addColorStop(0, fill); g.addColorStop(1, kind === "A" ? "#bdbbb3" : "#0f1a35"); x.fillStyle = g;
+    x.beginPath(); x.moveTo(40, 1150); x.bezierCurveTo(70, 930, 290, 840, 390, 815); x.lineTo(610, 815); x.bezierCurveTo(710, 840, 930, 930, 960, 1150); x.closePath(); x.fill();
+    x.fillRect(420, 620, 160, 230);
+    x.beginPath(); x.ellipse(500, 430, 205, 255, 0, 0, TAU); x.fill();
+    x.fillStyle = txt; x.textAlign = "center";
+    x.font = "800 38px 'PP Sans', sans-serif"; x.fillText(kind === "A" ? "hero-rosto.png" : "hero-mascara.png", 500, 1010);
+    x.font = "600 26px 'PP Sans', sans-serif"; x.fillText(kind === "A" ? "rosto sem máscara" : "mesmo enquadramento, com máscara", 500, 1055);
+    return c;
+  }
+
+  const VS = "attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}";
+  const FT = `precision highp float;varying vec2 v;uniform sampler2D uPrev;uniform vec2 uM,uV;uniform float uR,uAsp,uDecay,uAmt;
+    void main(){vec2 a=v-uV*.4;float prev=texture2D(uPrev,a).r*uDecay;vec2 d=v-uM;d.x*=uAsp;float b=(1.-smoothstep(uR*.1,uR,length(d)))*uAmt;gl_FragColor=vec4(min(1.,prev+b),0.,0.,1.);}`;
+  const FC = `precision highp float;varying vec2 v;uniform sampler2D uA,uB,uT;uniform vec4 uRect;uniform float uTime,uAsp;uniform vec2 uTx;
+    float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+    float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
+    vec4 img(sampler2D t,vec2 uv){vec2 q=(uv-uRect.xy)/uRect.zw;if(q.x<0.||q.y<0.||q.x>1.||q.y>1.)return vec4(0.);return texture2D(t,q);}
+    void main(){
+      float tr=texture2D(uT,v).r;vec2 np=vec2(v.x*uAsp,v.y);
+      float n=n2(np*4.5+uTime*.10)*.62+n2(np*13.-uTime*.18)*.38;
+      float f=tr+(n-.5)*.42;
+      float m=smoothstep(.40,.46,f);
+      float gx=texture2D(uT,v+vec2(uTx.x*3.,0.)).r-texture2D(uT,v-vec2(uTx.x*3.,0.)).r;
+      float gy=texture2D(uT,v+vec2(0.,uTx.y*3.)).r-texture2D(uT,v-vec2(0.,uTx.y*3.)).r;
+      vec4 A=img(uA,v);vec4 B=img(uB,v-vec2(gx,gy)*.014);
+      float sh=smoothstep(.10,.42,f)*(1.-m);A.rgb*=1.-sh*.34;
+      float rim=smoothstep(.40,.46,f)-smoothstep(.46,.56,f);B.rgb+=rim*.10*B.a;
+      gl_FragColor=mix(A,B,m*B.a);
+    }`;
+
+  function compile(vs, fs) {
+    const mk = (t, s) => { const sh = gl.createShader(t); gl.shaderSource(sh, s); gl.compileShader(sh); if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh)); return sh; };
+    const p = gl.createProgram(); gl.attachShader(p, mk(gl.VERTEX_SHADER, vs)); gl.attachShader(p, mk(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    const u = {}; const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); for (let i = 0; i < n; i++) { const a = gl.getActiveUniform(p, i); u[a.name] = gl.getUniformLocation(p, a.name); }
+    return { p, u, a: gl.getAttribLocation(p, "p") };
+  }
+  function mkTex(w, h, data) {
+    const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    if (data) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, data);
+    else gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    return t;
+  }
+  function upload(tex, source) {
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true); gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+  }
+  function initGL() {
+    try {
+      gl = cv.getContext("webgl", { alpha: true, premultipliedAlpha: true, antialias: false });
+      if (!gl) throw 0;
+      prTrail = compile(VS, FT); prComp = compile(VS, FC);
+      buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+      texA = mkTex(1, 1, null); texB = mkTex(1, 1, null);
+      return true;
+    } catch (e) { gl = null; ctx2d = cv.getContext("2d"); return false; }
+  }
+  function resize() {
+    const r = stage.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    const sc = parseFloat(stage.dataset.scale || "1") || 1;
+    W = Math.max(2, Math.round((r.width / sc) * dpr)); H = Math.max(2, Math.round((r.height / sc) * dpr));
+    cv.width = W; cv.height = H;
+    if (!gl) return;
+    TW = Math.max(2, Math.round(W / 4)); TH = Math.max(2, Math.round(H / 4));
+    tt.forEach(t => gl.deleteTexture(t)); fb.forEach(f => gl.deleteFramebuffer(f)); tt = []; fb = [];
+    for (let i = 0; i < 2; i++) {
+      const t = mkTex(TW, TH, null); const f = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
+      gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT); tt.push(t); fb.push(f);
+    }
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  }
+  function rect() {
+    const [iw, ih] = dims.A; let s = (H * 0.94) / ih; if (iw * s > W * 1.3) s = (W * 1.3) / iw;
+    const w = iw * s, h = ih * s; return [(W - w) / 2 / W, 0, w / W, h / H];
+  }
+  function useFallback() {
+    // Aberto com dois cliques (file://): o navegador não deixa o WebGL ler as imagens,
+    // então o efeito passa a ser desenhado em canvas 2D.
+    if (!gl) return;
+    const c2 = document.createElement("canvas"); c2.className = cv.className;
+    c2.setAttribute("role", "img"); c2.setAttribute("aria-label", cv.getAttribute("aria-label"));
+    cv.replaceWith(c2); cv = c2; gl = null; ctx2d = cv.getContext("2d"); resize();
+  }
+  function setImage(kind, source) {
+    const w = source.naturalWidth || source.width, h = source.naturalHeight || source.height;
+    if (kind === "A") S.imgA = source; else S.imgB = source;
+    dims[kind] = [w, h];
+    if (gl) { try { upload(kind === "A" ? texA : texB, source); } catch (e) { useFallback(); } }
+  }
+  function setSource(name, url) {
+    src[name] = url;
+    const kind = name === "hero-rosto" ? "A" : "B";
+    if (!url) { setImage(kind, placeholder(kind)); return; }
+    const im = new Image(); im.onload = () => setImage(kind, im); im.onerror = () => setImage(kind, placeholder(kind)); im.src = url;
+  }
+  function bind(pr) { gl.useProgram(pr.p); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.enableVertexAttribArray(pr.a); gl.vertexAttribPointer(pr.a, 2, gl.FLOAT, false, 0, 0); }
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!S.visible || document.hidden) return;
+    const t = (now - S.t0) / 1000;
+    // idle demo brush
+    let amt = S.active;
+    if (!reduce && now - S.lastMove > 2600) {
+      const r = rect(), cx = r[0] + r[2] * 0.5, cy = r[3] * 0.62;
+      S.mx = cx + Math.sin(t * 0.9) * r[2] * 0.22; S.my = cy + Math.sin(t * 1.37 + 1) * r[3] * 0.14;
+      amt = 0.32;
+    }
+    S.vx = S.vx * 0.6 + (S.mx - S.pmx) * 0.4; S.vy = S.vy * 0.6 + (S.my - S.pmy) * 0.4; S.pmx = S.mx; S.pmy = S.my;
+    const speed = Math.hypot(S.vx, S.vy);
+    if (gl) {
+      gl.viewport(0, 0, TW, TH); bind(prTrail);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fb[1 - cur]);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tt[cur]); gl.uniform1i(prTrail.u.uPrev, 0);
+      gl.uniform2f(prTrail.u.uM, S.mx, S.my); gl.uniform2f(prTrail.u.uV, S.vx, S.vy);
+      gl.uniform1f(prTrail.u.uR, 0.07 + Math.min(0.05, speed * 1.6)); gl.uniform1f(prTrail.u.uAsp, W / H);
+      gl.uniform1f(prTrail.u.uDecay, 0.982); gl.uniform1f(prTrail.u.uAmt, amt * (0.35 + Math.min(0.65, speed * 18)));
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); cur = 1 - cur;
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, W, H);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); bind(prComp);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texA); gl.uniform1i(prComp.u.uA, 0);
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texB); gl.uniform1i(prComp.u.uB, 1);
+      gl.activeTexture(gl.TEXTURE2); gl.bindTexture(gl.TEXTURE_2D, tt[cur]); gl.uniform1i(prComp.u.uT, 2);
+      gl.uniform4f(prComp.u.uRect, ...rect()); gl.uniform1f(prComp.u.uTime, t); gl.uniform1f(prComp.u.uAsp, W / H); gl.uniform2f(prComp.u.uTx, 1 / TW, 1 / TH);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    } else if (ctx2d && S.imgA) {
+      const r = rect(), ix = r[0] * W, iy = H - r[3] * H, iw = r[2] * W, ih = r[3] * H;
+      if (amt > 0) trail.push({ x: S.mx * W, y: (1 - S.my) * H, r: Math.min(W, H) * (0.08 + Math.min(0.05, speed * 1.6)), a: Math.min(1, amt * (0.55 + Math.min(0.45, speed * 18))) });
+      trail.forEach(q => { q.a *= 0.975; }); trail = trail.filter(q => q.a > 0.03); if (trail.length > 260) trail.splice(0, trail.length - 260);
+      const k = 3, mw = Math.ceil(W / k), mh = Math.ceil(H / k);
+      if (!mask || mask.width !== mw || mask.height !== mh) { mask = document.createElement("canvas"); mask.width = mw; mask.height = mh; layer = document.createElement("canvas"); }
+      if (layer.width !== W || layer.height !== H) { layer.width = W; layer.height = H; }
+      const m = mask.getContext("2d"), l = layer.getContext("2d");
+      m.clearRect(0, 0, mw, mh);
+      trail.forEach(q => { const g = m.createRadialGradient(q.x / k, q.y / k, 0, q.x / k, q.y / k, q.r / k); g.addColorStop(0, `rgba(0,0,0,${q.a})`); g.addColorStop(0.62, `rgba(0,0,0,${q.a})`); g.addColorStop(1, "rgba(0,0,0,0)"); m.fillStyle = g; m.beginPath(); m.arc(q.x / k, q.y / k, q.r / k, 0, TAU); m.fill(); });
+      l.globalCompositeOperation = "source-over"; l.clearRect(0, 0, W, H);
+      if (S.imgB) { l.drawImage(S.imgB, ix, iy, iw, ih); l.globalCompositeOperation = "destination-in"; l.drawImage(mask, 0, 0, W, H); }
+      ctx2d.clearRect(0, 0, W, H); ctx2d.drawImage(S.imgA, ix, iy, iw, ih);
+      ctx2d.save(); ctx2d.globalCompositeOperation = "source-atop"; ctx2d.globalAlpha = 0.28; ctx2d.filter = `blur(${Math.round(W / 90)}px)`; ctx2d.drawImage(mask, W * 0.01, H * 0.012, W, H); ctx2d.restore();
+      ctx2d.drawImage(layer, 0, 0);
+    }
+  }
+  function pointer(e) {
+    const r = stage.getBoundingClientRect();
+    S.mx = (e.clientX - r.left) / r.width; S.my = 1 - (e.clientY - r.top) / r.height; S.lastMove = performance.now();
+  }
+  stage.addEventListener("pointermove", e => { if (e.pointerType === "mouse" || S.painting) { pointer(e); S.active = 1; } });
+  stage.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse" && !S.painting) return; pointer(e); S.active = 1; });
+  stage.addEventListener("pointerleave", () => { S.active = 0; });
+  const touchBtn = $(".hero-touch");
+  touchBtn.addEventListener("click", () => { S.painting = !S.painting; touchBtn.setAttribute("aria-pressed", String(S.painting)); touchBtn.textContent = S.painting ? "Rolar" : "Pintar"; touchBtn.setAttribute("aria-label", S.painting ? "Voltar a rolar a página" : "Pintar o retrato com o dedo"); cv.classList.toggle("painting", S.painting); });
+  new IntersectionObserver(es => es.forEach(e => (S.visible = e.isIntersecting))).observe(stage);
+
+  const ok = initGL();
+  setImage("A", placeholder("A")); setImage("B", placeholder("B"));
+  return {
+    start() { resize(); requestAnimationFrame(frame); },
+    resize, setSource,
+    refreshPlaceholders() { if (!src["hero-rosto"]) setImage("A", placeholder("A")); if (!src["hero-mascara"]) setImage("B", placeholder("B")); },
+    get gl() { return ok; }
+  };
+})();
+
+/* ================= TEXT ================= */
+function splitRoll(el) {
+  const text = el.textContent; el.textContent = "";
+  [...text].forEach((ch, i) => { const s = document.createElement("span"); s.className = "ch"; s.style.setProperty("--i", i); s.textContent = ch === " " ? " " : ch; el.appendChild(s); });
+}
+if (!reduce) $$(".roll").forEach(splitRoll);
+
+const lined = $$("[data-lines]").map(el => ({ el, html: el.innerHTML, lines: [] }));
+function buildLines(it) {
+  const el = it.el; el.innerHTML = it.html; el.classList.remove("lined");
+  const units = [];
+  [...el.childNodes].forEach(n => {
+    if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(p => { if (!p) return; if (/^\s+$/.test(p)) units.push(document.createTextNode(" ")); else { const s = document.createElement("span"); s.textContent = p; units.push(s); } });
+    else units.push(n.cloneNode(true));
+  });
+  el.textContent = ""; units.forEach(u => el.appendChild(u));
+  const groups = []; let top = null;
+  units.forEach(u => { if (u.nodeType === 3) { if (groups.length) groups[groups.length - 1].push(u); return; } const t = u.offsetTop; if (top === null || Math.abs(t - top) > 4) { groups.push([]); top = t; } groups[groups.length - 1].push(u); });
+  el.textContent = ""; it.lines = [];
+  groups.forEach(g => {
+    const ln = document.createElement("span"); ln.className = "ln"; const li = document.createElement("span"); li.className = "ln-i";
+    while (g.length && g[g.length - 1].nodeType === 3) g.pop();
+    g.forEach(u => li.appendChild(u));
+    const b = document.createElement("span"); b.className = "ln-b"; b.setAttribute("aria-hidden", "true"); li.appendChild(b);
+    ln.appendChild(li); el.appendChild(ln); el.appendChild(document.createTextNode(" "));
+    it.lines.push({ li, b, last: -1 });
+  });
+  el.classList.add("lined");
+}
+
+/* ================= SUITS + FAN ================= */
+const suitPath = "M0.02,0 H0.98 C0.991,0 1,0.01 1,0.02 V0.82 C1,0.831 0.991,0.84 0.98,0.84 H0.66 C0.63,0.84 0.612,0.85 0.596,0.87 L0.55,0.975 C0.54,0.992 0.525,1 0.5,1 H0.02 C0.009,1 0,0.991 0,0.98 V0.02 C0,0.009 0.009,0 0.02,0 Z";
+$("[data-suits]").innerHTML = SUITS.map((s, i) => `
+  <li class="suit" tabindex="0">
+    <div class="suit-box">
+      <div class="suit-art">
+        <div class="slot contain suit-img" data-slot-target="traje-${i + 1}" data-label="traje-${i + 1}.png&#10;recorte do traje"><img data-slot="traje-${i + 1}" alt="Traje ${s.name}, ${s.year}"></div>
+        <div class="slot suit-reveal" data-slot-target="traje-${i + 1}-cena" data-label="traje-${i + 1}-cena.jpg"><img data-slot="traje-${i + 1}-cena" alt="Cena com o traje ${s.name}"></div>
+        <p class="suit-film">${s.film}</p>
+      </div>
+      <svg class="suit-outline" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path vector-effect="non-scaling-stroke" d="${suitPath}"/></svg>
+      <h3 class="suit-label">${s.name} <b>${s.year}</b></h3>
+    </div>
+  </li>`).join("");
+if (!canHover) $$(".suit").forEach(u => u.addEventListener("click", () => { $$(".suit.is-on").forEach(o => o !== u && o.classList.remove("is-on")); u.classList.toggle("is-on"); }));
+
+const fanPos = [{ r: -13, y: "3.2rem" }, { r: -6.5, y: ".9rem" }, { r: 0, y: "0rem" }, { r: 6.5, y: ".9rem" }, { r: 13, y: "3.2rem" }];
+$("[data-fan]").innerHTML = POSTS.map((p, i) => `
+  <li style="--i:${i};--r:${fanPos[i].r}deg;--y:${fanPos[i].y};--z:${5 - Math.abs(i - 2)}">
+    <a class="post" href="#${p.id}" data-post-link="${p.id}">
+      <span class="slot" data-slot-target="${p.slot}" data-label="${p.slot}.jpg"><img data-slot="${p.slot}" alt=""></span>
+      <span class="post-shade"><span class="post-tag">${p.tag}</span><span class="post-title">${p.title}</span><span class="post-meta">${p.date}</span></span>
+    </a>
+  </li>`).join("");
+
+/* ================= READER ================= */
+const reader = $(".reader"), rPanel = $(".reader-panel"), R = k => $(`[data-r="${k}"]`, reader);
+let opener = null, current = -1, lenis = null;
+const outside = () => [$("main"), $(".nav"), $(".foot")];
+function fillPost(i) {
+  const p = POSTS[i]; current = i;
+  R("tag").textContent = p.tag; R("title").textContent = p.title; R("date").textContent = p.date; R("read").textContent = p.read; R("body").innerHTML = p.body;
+  $("b", R("next")).textContent = POSTS[(i + 1) % POSTS.length].title;
+  const art = R("art"), img = $("img", art); img.setAttribute("data-slot", p.slot); art.setAttribute("data-slot-target", p.slot); art.setAttribute("data-label", p.slot + ".jpg"); applySlot(p.slot, reader);
+  rPanel.scrollTop = 0;
+}
+function openPost(id, from) {
+  const i = POSTS.findIndex(p => p.id === id); if (i < 0) return;
+  opener = from || document.activeElement; fillPost(i);
+  reader.hidden = false; outside().forEach(e => (e.inert = true)); document.documentElement.classList.add("locked"); lenis && lenis.stop();
+  requestAnimationFrame(() => requestAnimationFrame(() => { reader.classList.add("open"); $(".reader-close", reader).focus({ preventScroll: true }); }));
+}
+function closePost() {
+  if (reader.hidden) return;
+  reader.classList.remove("open"); outside().forEach(e => (e.inert = false)); document.documentElement.classList.remove("locked"); lenis && lenis.start();
+  setTimeout(() => { reader.hidden = true; }, reduce ? 0 : 600);
+  opener && opener.focus && opener.focus({ preventScroll: true });
+}
+reader.addEventListener("click", e => { if (e.target.closest("[data-close]")) closePost(); });
+R("next").addEventListener("click", () => fillPost((current + 1) % POSTS.length));
+document.addEventListener("click", e => { const a = e.target.closest("[data-post-link]"); if (!a) return; e.preventDefault(); openPost(a.dataset.postLink, a); });
+
+/* ================= MENU ================= */
+const menu = $("#menu"), ham = $(".ham"), nav = $(".nav");
+let menuOpen = false;
+function openMenu() {
+  menuOpen = true; menu.hidden = false; ham.setAttribute("aria-expanded", "true"); ham.setAttribute("aria-label", "Fechar menu"); nav.classList.add("menu-open");
+  $("main").inert = true; $(".foot").inert = true; lenis && lenis.stop();
+  requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add("open")));
+  setTimeout(() => { const a = $(".menu-links a", menu); a && a.focus({ preventScroll: true }); }, reduce ? 0 : 400);
+}
+function closeMenu(silent) {
+  if (!menuOpen) return; menuOpen = false;
+  menu.classList.remove("open"); ham.setAttribute("aria-expanded", "false"); ham.setAttribute("aria-label", "Abrir menu"); nav.classList.remove("menu-open");
+  $("main").inert = false; $(".foot").inert = false; lenis && lenis.start();
+  setTimeout(() => { if (!menuOpen) menu.hidden = true; }, reduce || silent ? 0 : 820);
+  if (!silent) ham.focus({ preventScroll: true });
+}
+ham.addEventListener("click", () => (menuOpen ? closeMenu() : openMenu()));
+document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!reader.hidden) closePost(); else if (menuOpen) closeMenu(); });
+
+/* ================= JUMP ================= */
+const NAMES = { inicio: "Início", cenas: "Cenas", trajes: "Trajes", filme: "O filme", diario: "Diário", mascara: "Máscara" };
+const jump = $(".jump"); let jumping = false;
+function scrollToEl(el) { const y = el.getBoundingClientRect().top + window.scrollY; if (lenis) lenis.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y); }
+function jumpTo(id) {
+  const el = document.getElementById(id); if (!el || jumping) return;
+  if (reduce) { closeMenu(true); scrollToEl(el); return; }
+  jumping = true; $("[data-jump-to]").textContent = NAMES[id] || "";
+  jump.classList.add("in");
+  setTimeout(() => {
+    closeMenu(true); lenis && lenis.start(); scrollToEl(el); jump.classList.add("out");
+    setTimeout(() => { jump.classList.remove("in", "out"); jumping = false; el.setAttribute("tabindex", "-1"); el.focus({ preventScroll: true }); }, 620);
+  }, 580);
+}
+document.addEventListener("click", e => { const a = e.target.closest("[data-jump]"); if (!a) return; e.preventDefault(); jumpTo((a.getAttribute("href") || "").slice(1)); });
+
+/* ================= COUNTDOWN (4K e Blu-ray) ================= */
+const target = new Date(2026, 11, 15, 0, 0, 0);
+function countTick() { const d = Math.max(0, Math.ceil((target - new Date()) / 864e5)); $$("[data-days]").forEach(e => (e.textContent = d)); }
+countTick(); setInterval(countTick, 60000);
+
+/* ================= MARQUEES ================= */
+const marquees = $$(".marquee").map(el => {
+  const track = $(".mq-track", el), set = $(".mq-set", el);
+  const m = { el, track, set, x: 0, w: 0, dir: +el.dataset.dir || 1, speed: +el.dataset.speed || 40 };
+  if (reduce) { el.classList.add("static"); return m; }
+  m.fill = () => {
+    $$("[data-clone]", track).forEach(c => c.remove());
+    m.w = set.getBoundingClientRect().width; if (m.w < 1) return;
+    const need = Math.ceil((innerWidth * 2) / m.w);
+    for (let i = 0; i < need; i++) { const c = set.cloneNode(true); c.setAttribute("data-clone", ""); c.setAttribute("aria-hidden", "true"); c.removeAttribute("aria-label"); track.appendChild(c); }
+  };
+  m.fill(); return m;
+});
+
+/* ================= STRIP + SCROLL ================= */
+const heroTrack = $(".hero-track"), heroPin = $(".hero-pin"), stage = $(".hero-stage"), frameEl = $(".hero-frame"), heroWeb = $(".hero-pin .web-bg"), hm = $(".hero-marquee"), hmRows = $$(".hm-row"), heroHud = [$(".next"), $(".hero-hint")];
+const strip = $(".strip"), track = $(".strip-track");
+const wide = $(".wide"), wideImg = $(".wide img"), blocks = $(".blocks");
+const pinOn = !reduce; let stripMax = 0;
+if (pinOn) strip.classList.add("js-pin");
+function stripMeasure() { if (!pinOn) return; stripMax = Math.max(0, track.scrollWidth - innerWidth); strip.style.height = (stripMax + innerHeight) + "px"; }
+const C = { cream: [242, 241, 236], night: [15, 26, 53], slate: [93, 102, 128] };
+const mix = (a, b, t) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",")})`;
+
+const seen = new Set();
+const io = new IntersectionObserver(es => es.forEach(e => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target))), { rootMargin: "20% 0px" });
+[...lined.map(l => l.el), ...marquees.map(m => m.el), wide].forEach(el => io.observe(el));
+let stickerOn = false; const sticker = $("[data-sticker]");
+new IntersectionObserver(es => es.forEach(e => (stickerOn = e.isIntersecting))).observe(sticker);
+
+const bar = $(".scrollbar span"), surfaces = $$("[data-surface]"), menuLinks = $$(".menu-links a");
+let navOn = "light", lastY = window.scrollY, lastT = performance.now(), dirSign = 1, curSec = "";
+function frame(now) {
+  requestAnimationFrame(frame);
+  const y = window.scrollY, vh = innerHeight, max = document.documentElement.scrollHeight - vh;
+  const dt = Math.min(0.1, (now - lastT) / 1000) || 0.016, dy = y - lastY, vel = dy / dt;
+  if (Math.abs(dy) > 0.5) dirSign = dy > 0 ? 1 : -1; lastY = y; lastT = now;
+  bar.style.setProperty("--p", max > 0 ? (y / max).toFixed(4) : 0);
+
+  // hero shrink
+  if (!reduce) {
+    const hr = heroTrack.getBoundingClientRect(), total = Math.max(1, hr.height - vh), p = clamp(-hr.top / total, 0, 1);
+    if (hr.bottom > 0) {
+      const e = smooth(clamp((p - 0.04) / 0.62, 0, 1)), sc = 1 - 0.44 * e;
+      stage.style.transform = `scale(${sc.toFixed(4)})`; stage.dataset.scale = sc.toFixed(4);
+      frameEl.style.setProperty("--fo", e.toFixed(3)); frameEl.style.setProperty("--r", (26 * e / sc).toFixed(1) + "px");
+      heroPin.style.backgroundColor = mix(C.cream, C.night, e); heroWeb.style.opacity = (1 - e).toFixed(3);
+      hm.style.opacity = clamp(e * 1.6 - 0.2, 0, 1).toFixed(3);
+      hmRows.forEach(r => { const d = +r.dataset.hm; r.style.transform = `translate3d(${(d > 0 ? -10 - p * 40 : -60 + p * 40).toFixed(2)}vw,0,0)`; });
+      heroHud.forEach(h => (h.style.opacity = clamp(1 - e * 2.2, 0, 1).toFixed(3)));
+      heroPin.dataset.surfaceNow = e > 0.5 ? "dark" : "light";
+    }
+  }
+  // strip
+  const sr = strip.getBoundingClientRect();
+  if (pinOn && sr.bottom > 0 && sr.top < vh) {
+    const p = clamp(-sr.top / Math.max(1, stripMax), 0, 1);
+    track.style.transform = `translate3d(${(-p * stripMax).toFixed(1)}px,0,0)`;
+    const col = p < 0.5 ? mix(C.night, C.slate, smooth(p / 0.5)) : mix(C.slate, C.cream, smooth((p - 0.5) / 0.5));
+    strip.style.backgroundColor = col; strip.style.color = p > 0.68 ? "var(--ink)" : "var(--cream)"; strip.dataset.surfaceNow = p > 0.68 ? "light" : "dark";
+  }
+  // wide image parallax + blocks
+  if (seen.has(wide)) {
+    const r = wide.getBoundingClientRect(), p = clamp((vh - r.top) / (vh + r.height), 0, 1);
+    wideImg.style.setProperty("--ws", (1.16 - p * 0.14).toFixed(4));
+    blocks.style.setProperty("--bs", smooth(clamp((p - 0.55) / 0.35, 0, 1)).toFixed(3));
+    $$("i", blocks).forEach((b, k) => b.style.setProperty("--bs", smooth(clamp((p - 0.5 - k * 0.06) / 0.3, 0, 1)).toFixed(3)));
+  }
+  // statement lines
+  for (const it of lined) {
+    if (!seen.has(it.el)) continue;
+    it.lines.forEach(L => {
+      const r = L.li.getBoundingClientRect(); const p = clamp((vh * 0.86 - r.top) / (vh * 0.28), 0, 1);
+      const q = Math.round(p * 40); if (q === L.last) return; L.last = q;
+      if (p < 0.5) { L.b.style.transformOrigin = "left"; L.b.style.transform = `scaleX(${(p / 0.5).toFixed(3)})`; }
+      else { L.b.style.transformOrigin = "right"; L.b.style.transform = `scaleX(${((1 - p) / 0.5).toFixed(3)})`; }
+      L.li.classList.toggle("on", p >= 0.5);
+    });
+  }
+  // nav surface + current section
+  let on = navOn, sec = curSec;
+  for (const s of surfaces) {
+    const r = s.getBoundingClientRect();
+    if (r.top + (+s.dataset.surfaceOffset || 0) <= 40 && r.bottom > 40) on = s.dataset.surfaceNow || s.dataset.surface;
+    const host = s.closest("[id]"); if (host && r.top <= vh * 0.45 && r.bottom > vh * 0.45) sec = host.id;
+  }
+  if (on !== navOn) { navOn = on; nav.dataset.on = on; }
+  if (sec !== curSec) { curSec = sec; menuLinks.forEach(a => a.setAttribute("aria-current", String(a.dataset.sec === sec))); }
+  // marquees
+  const boost = 1 + Math.min(4, Math.abs(vel) * 0.003);
+  for (const m of marquees) {
+    if (!m.w || !seen.has(m.el)) continue;
+    m.x -= m.speed * boost * m.dir * dirSign * dt;
+    if (m.x <= -m.w) m.x += m.w; if (m.x > 0) m.x -= m.w;
+    m.track.style.transform = `translate3d(${m.x.toFixed(1)}px,0,0)`;
+  }
+  if (stickerOn && !reduce) sticker.style.setProperty("--rot", (-10 + Math.sin(now / 900) * 4).toFixed(2) + "deg");
+}
+
+/* ================= SMOOTH SCROLL ================= */
+if (!reduce && window.Lenis) {
+  try { lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true }); const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+  catch (err) { lenis = null; }
+}
+
+/* ================= INIT ================= */
+function layout() { stage.dataset.scale = stage.dataset.scale || "1"; Hero.resize(); lined.forEach(buildLines); stripMeasure(); marquees.forEach(m => m.fill && m.fill()); }
+let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(layout, 180); });
+layout(); Hero.start(); requestAnimationFrame(frame);
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { layout(); Hero.refreshPlaceholders(); });
+if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", () => { clearTimeout(rz); rz = setTimeout(() => { layout(); Hero.refreshPlaceholders(); }, 120); });
+Object.keys(SLOTS).forEach(loadSlot);
+const startHash = location.hash.slice(1);
+if (startHash && POSTS.some(p => p.id === startHash)) setTimeout(() => openPost(startHash), 400);
+})();
+</script>
+
+</body>
+</html>

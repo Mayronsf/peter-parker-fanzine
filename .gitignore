@@ -1,0 +1,9 @@
+# capturas de tela usadas para pedir ajustes
+ajustes/
+
+# sistema
+Thumbs.db
+.DS_Store
+
+# fotos originais e anotações de escolha (o site não usa)
+imagens/propostas/
